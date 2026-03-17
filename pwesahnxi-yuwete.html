@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vocabulario de fútbol en kwe'sx we'wnxi - Territorio Sa'th Tama Taba, Municipio de Caldono, Cauca">
+  <meta name="theme-color" content="#6B3320">
+  <title>Pwesa'hnxi Yuwete Jxpe'hnxi — Términos del Fútbol</title>
+
+  <!-- Fuentes: Baloo 2 (títulos, amigable y redondeada) + Nunito (cuerpo, legible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       VARIABLES DE COLOR — Paleta tierra del Pueblo Nasa
+       Para cambiar colores, modifica aquí y se actualiza en todo.
+    ================================================================ */
+    :root {
+      --arcilla:        #6B3320;   /* Café arcilla oscuro */
+      --terracota:      #B85C38;   /* Terracota principal */
+      --tierra:         #9B4B2A;   /* Tierra media */
+      --tierra-clara:   #D2876A;   /* Tierra suave */
+      --bosque:         #2D5A1B;   /* Verde bosque */
+      --bosque-claro:   #4A8B35;   /* Verde medio */
+      --hoja:           #7AB648;   /* Verde hoja */
+      --maiz:           #C8950E;   /* Amarillo maíz oscuro */
+      --maiz-claro:     #E5B830;   /* Amarillo maíz claro */
+      --crema:          #F7EDDA;   /* Crema cálido (fondo base) */
+      --crema-oscura:   #E8D4B0;   /* Crema más oscura */
+      --crema-media:    #F0E0C0;   /* Crema media */
+      --blanco:         #FDFAF4;   /* Blanco cálido */
+      --negro:          #1C0F06;   /* Negro tierra */
+      --gris:           #614A36;   /* Gris cálido */
+      --gris-claro:     #9B7E66;   /* Gris claro */
+
+      /* Colores semánticos */
+      --rojo-falta:     #B92B2B;   /* Rojo faltas */
+      --amarillo-tarj:  #D4A017;   /* Amarillo tarjeta */
+      --verde-tarj:     #2E8B57;   /* Verde tarjeta */
+      --azul-tarj:      #1F6FA8;   /* Azul tarjeta */
+      --azul-frase:     #1A5276;   /* Azul frases */
+
+      /* Tipografía */
+      --font-titulo:    'Baloo 2', 'Comic Sans MS', cursive;
+      --font-cuerpo:    'Nunito', 'Trebuchet MS', sans-serif;
+
+      /* Sombras */
+      --sombra-suave:   0 4px 16px rgba(107, 51, 32, 0.12);
+      --sombra-carta:   0 6px 24px rgba(107, 51, 32, 0.18);
+      --sombra-activo:  0 10px 32px rgba(107, 51, 32, 0.28);
+
+      /* Radios */
+      --radio:          16px;
+      --radio-sm:       10px;
+    }
+
+    /* ================================================================
+       RESET Y BASE
+    ================================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-cuerpo);
+      background-color: var(--crema);
+      color: var(--negro);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ================================================================
+       PATRÓN GEOMÉTRICO NASA (rombos tipo tejido)
+       Usado como fondo decorativo en el header y separadores
+    ================================================================ */
+    .patron-nasa {
+      --d: 18px; /* Tamaño del rombo */
+      height: 24px;
+      background-color: var(--maiz);
+      background-image:
+        linear-gradient(135deg, var(--arcilla) 25%, transparent 25%),
+        linear-gradient(225deg, var(--arcilla) 25%, transparent 25%),
+        linear-gradient(315deg, var(--arcilla) 25%, transparent 25%),
+        linear-gradient(45deg,  var(--arcilla) 25%, transparent 25%);
+      background-size: var(--d) var(--d);
+      background-position:
+        calc(var(--d)/2) 0,
+        calc(var(--d)/2) 0,
+        0 0,
+        0 0;
+    }
+
+    /* Versión tricolor */
+    .patron-nasa-2 {
+      height: 20px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--bosque)    0px,  var(--bosque)    16px,
+        var(--maiz-claro) 16px, var(--maiz-claro) 32px,
+        var(--terracota) 32px, var(--terracota) 48px,
+        var(--arcilla)   48px, var(--arcilla)   64px
+      );
+    }
+
+    /* ================================================================
+       HEADER
+    ================================================================ */
+    header {
+      background: linear-gradient(160deg, var(--arcilla) 0%, var(--tierra) 60%, var(--terracota) 100%);
+      color: var(--crema);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fondo con patrón de tejido sutil */
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 10px),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 10px);
+      pointer-events: none;
+    }
+
+    /* Círculo decorativo de fondo */
+    header::after {
+      content: '⚽';
+      position: absolute;
+      right: -40px;
+      bottom: -30px;
+      font-size: 140px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    .header-contenido {
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Fila de emblemas decorativos */
+    .header-emblemas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .emblema {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      backdrop-filter: blur(4px);
+      flex-shrink: 0;
+    }
+
+    .emblema-linea {
+      height: 2px;
+      width: 32px;
+      background: var(--maiz-claro);
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+
+    /* Título principal */
+    .titulo-principal {
+      font-family: var(--font-titulo);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--crema);
+      text-shadow: 1px 2px 10px rgba(0,0,0,0.35);
+      margin-bottom: 0.75rem;
+    }
+
+    .titulo-nasa {
+      font-size: clamp(1.5rem, 5.5vw, 2.6rem);
+      color: var(--maiz-claro);
+      display: block;
+      letter-spacing: 0.01em;
+    }
+
+    .titulo-esp {
+      font-size: clamp(1.05rem, 3.5vw, 1.75rem);
+      display: block;
+      font-weight: 700;
+      opacity: 0.92;
+    }
+
+    .header-subtitulo {
+      font-size: clamp(0.78rem, 2.5vw, 0.97rem);
+      color: var(--crema-oscura);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      opacity: 0.9;
+    }
+
+    /* Etiqueta territorio */
+    .header-territorio {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--maiz-claro);
+      margin-top: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ================================================================
+       SECCIÓN INTRODUCTORIA
+    ================================================================ */
+    .intro {
+      background: var(--bosque);
+      color: var(--crema);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+
+    .intro-texto {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      line-height: 1.75;
+    }
+
+    .intro-texto strong {
+      color: var(--maiz-claro);
+    }
+
+    .intro-pasos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+
+    .paso {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 50px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.83rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.2s;
+    }
+
+    .paso:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ================================================================
+       BARRA DE CONTROLES (sticky)
+    ================================================================ */
+    .controles {
+      background: var(--blanco);
+      padding: 0.9rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      border-bottom: 4px solid var(--terracota);
+    }
+
+    .controles-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .fila-busqueda {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    /* Buscador */
+    .buscador {
+      flex: 1;
+      padding: 0.6rem 1rem 0.6rem 2.5rem;
+      border: 2px solid var(--crema-oscura);
+      border-radius: 50px;
+      font-family: var(--font-cuerpo);
+      font-size: 0.95rem;
+      background: var(--crema) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239B7E66' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 0.8rem center;
+      color: var(--negro);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .buscador:focus {
+      border-color: var(--terracota);
+      box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.15);
+    }
+
+    .buscador::placeholder {
+      color: var(--gris-claro);
+    }
+
+    /* Botón modo estudio */
+    .btn-estudio {
+      background: var(--bosque);
+      color: var(--crema);
+      border: 2px solid transparent;
+      border-radius: 50px;
+      padding: 0.58rem 1.1rem;
+      font-family: var(--font-cuerpo);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      line-height: 1;
+    }
+
+    .btn-estudio:hover {
+      background: var(--bosque-claro);
+      transform: translateY(-1px);
+    }
+
+    .btn-estudio.activo {
+      background: var(--maiz);
+      color: var(--negro);
+    }
+
+    /* Indicador de modo estudio */
+    .indicador-estudio {
+      display: none;
+      background: linear-gradient(90deg, var(--maiz), var(--maiz-claro));
+      color: var(--negro);
+      text-align: center;
+      padding: 0.35rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: var(--radio-sm);
+      animation: pulso 2s infinite;
+    }
+
+    .indicador-estudio.visible {
+      display: block;
+    }
+
+    @keyframes pulso {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* Tabs de categorías */
+    .tabs-categorias {
+      display: flex;
+      gap: 0.45rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .tabs-categorias::-webkit-scrollbar { display: none; }
+
+    .tab {
+      background: var(--crema-media);
+      color: var(--gris);
+      border: 2px solid transparent;
+      border-radius: 50px;
+      padding: 0.42rem 0.9rem;
+      font-family: var(--font-cuerpo);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      line-height: 1;
+    }
+
+    .tab:hover {
+      background: var(--crema);
+      border-color: var(--terracota);
+      color: var(--terracota);
+    }
+
+    /* Colores activos por categoría */
+    .tab.activo                     { color: var(--crema); }
+    .tab[data-cat="-1"].activo      { background: var(--gris);       border-color: var(--gris); }
+    .tab[data-cat="0"].activo       { background: var(--tierra);      border-color: var(--tierra); }
+    .tab[data-cat="1"].activo       { background: var(--bosque);      border-color: var(--bosque); }
+    .tab[data-cat="2"].activo       { background: var(--maiz);        border-color: var(--maiz); color: var(--negro); }
+    .tab[data-cat="3"].activo       { background: var(--rojo-falta);  border-color: var(--rojo-falta); }
+    .tab[data-cat="4"].activo       { background: var(--arcilla);     border-color: var(--arcilla); }
+    .tab[data-cat="5"].activo       { background: var(--azul-frase);  border-color: var(--azul-frase); }
+
+    /* Conteo de resultados */
+    .conteo-resultados {
+      font-size: 0.78rem;
+      color: var(--gris-claro);
+      padding: 0.1rem 0.2rem;
+    }
+
+    /* ================================================================
+       CONTENIDO PRINCIPAL
+    ================================================================ */
+    .contenido-principal {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 2.5rem;
+    }
+
+    /* ================================================================
+       SECCIÓN DE CATEGORÍA
+    ================================================================ */
+    .seccion-categoria {
+      margin-bottom: 2.75rem;
+    }
+
+    .encabezado-categoria {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 3px solid var(--crema-oscura);
+      position: relative;
+    }
+
+    /* Acento de color a la izquierda del encabezado */
+    .encabezado-categoria::before {
+      content: '';
+      position: absolute;
+      left: -1.25rem;
+      top: 0;
+      bottom: 0.8rem;
+      width: 5px;
+      border-radius: 0 4px 4px 0;
+      background: var(--terracota);
+    }
+
+    .cat-color-0::before { background: var(--tierra); }
+    .cat-color-1::before { background: var(--bosque); }
+    .cat-color-2::before { background: var(--maiz); }
+    .cat-color-3::before { background: var(--rojo-falta); }
+    .cat-color-4::before { background: var(--arcilla); }
+    .cat-color-5::before { background: var(--azul-frase); }
+
+    .icono-categoria { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+
+    .nombre-categoria {
+      font-family: var(--font-titulo);
+      font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+      font-weight: 700;
+      color: var(--arcilla);
+    }
+
+    .badge-conteo {
+      margin-left: auto;
+      background: var(--crema-oscura);
+      color: var(--gris);
+      border-radius: 50px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ================================================================
+       GRILLA DE TARJETAS
+    ================================================================ */
+    .grilla {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Grilla más ancha para frases */
+    .grilla-frases {
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    }
+
+    /* ================================================================
+       TARJETA VOLTEADORA (flip card)
+    ================================================================ */
+    .flip-card {
+      perspective: 1200px;
+      height: 185px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.volteada .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-frente,
+    .flip-dorso {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radio);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem 0.9rem;
+      box-shadow: var(--sombra-carta);
+      transition: box-shadow 0.2s;
+    }
+
+    .flip-card:hover .flip-frente,
+    .flip-card:hover .flip-dorso {
+      box-shadow: var(--sombra-activo);
+    }
+
+    /* Frente: crema cálido */
+    .flip-frente {
+      background: var(--blanco);
+      border: 2px solid var(--crema-oscura);
+    }
+
+    /* Dorso: gradiente tierra */
+    .flip-dorso {
+      transform: rotateY(180deg);
+      color: var(--crema);
+    }
+
+    /* Colores de dorso por categoría */
+    .cat-0 .flip-dorso { background: linear-gradient(140deg, var(--arcilla), var(--terracota)); border: 2px solid var(--arcilla); }
+    .cat-1 .flip-dorso { background: linear-gradient(140deg, var(--bosque), var(--bosque-claro)); border: 2px solid var(--bosque); }
+    .cat-2 .flip-dorso { background: linear-gradient(140deg, #9A700A, var(--maiz)); border: 2px solid var(--maiz); color: var(--negro); }
+    .cat-3 .flip-dorso { background: linear-gradient(140deg, #7A1A1A, var(--rojo-falta)); border: 2px solid var(--rojo-falta); }
+    .cat-4 .flip-dorso { background: linear-gradient(140deg, var(--arcilla), #4A3020); border: 2px solid var(--arcilla); }
+    .cat-5 .flip-dorso { background: linear-gradient(140deg, #0F3A5C, var(--azul-frase)); border: 2px solid var(--azul-frase); }
+
+    /* Icono grande */
+    .icono-carta {
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s;
+    }
+
+    .flip-card:hover .icono-carta { transform: scale(1.08); }
+
+    /* Palabra en kwe'sx we'wnxi */
+    .palabra-nasa {
+      font-family: var(--font-titulo);
+      font-size: clamp(0.8rem, 2.2vw, 0.97rem);
+      font-weight: 700;
+      color: var(--arcilla);
+      line-height: 1.3;
+      word-break: break-word;
+      hyphens: auto;
+      transition: opacity 0.3s;
+    }
+
+    /* En modo estudio, ocultar la palabra nasa en el frente */
+    body.modo-estudio .flip-frente .palabra-nasa {
+      opacity: 0;
+    }
+
+    /* Pista "toca para ver" */
+    .pista-toca {
+      font-size: 0.62rem;
+      color: var(--gris-claro);
+      margin-top: auto;
+      padding-top: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Dorso: traducción */
+    .traduccion {
+      font-family: var(--font-titulo);
+      font-size: clamp(0.85rem, 2.2vw, 1rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .palabra-nasa-small {
+      font-size: 0.72rem;
+      opacity: 0.82;
+      font-style: italic;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+
+    /* Botón de audio (próximamente) */
+    .btn-audio {
+      margin-top: 0.55rem;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50px;
+      padding: 0.22rem 0.65rem;
+      font-size: 0.65rem;
+      color: inherit;
+      cursor: not-allowed;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-family: var(--font-cuerpo);
+      font-weight: 600;
+      opacity: 0.85;
+    }
+
+    /* ================================================================
+       TARJETAS DE FRASES (Categoría 6)
+    ================================================================ */
+    .frase-card {
+      background: var(--blanco);
+      border: 2px solid var(--crema-oscura);
+      border-left: 5px solid var(--azul-frase);
+      border-radius: var(--radio);
+      padding: 1.25rem 1.1rem;
+      box-shadow: var(--sombra-suave);
+      cursor: default;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .frase-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--sombra-activo);
+    }
+
+    .frase-nasa {
+      font-family: var(--font-titulo);
+      font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+      font-weight: 700;
+      color: var(--arcilla);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .frase-icono { font-size: 1.3rem; flex-shrink: 0; line-height: 1; margin-top: 0.05rem; }
+
+    .frase-traduccion {
+      font-size: 0.88rem;
+      color: var(--gris);
+      padding-left: 1.85rem;
+      line-height: 1.5;
+      transition: opacity 0.3s;
+    }
+
+    /* Ocultar traducción en modo estudio para frases */
+    body.modo-estudio .frase-traduccion {
+      opacity: 0;
+    }
+
+    /* ================================================================
+       TARJETAS ESPECIALES DE SANCIONES
+    ================================================================ */
+    /* La categoría 4 usa colores de las tarjetas */
+    .cat-4 .flip-frente[data-tipo="amarilla"] { border-color: var(--amarillo-tarj); border-width: 3px; }
+    .cat-4 .flip-frente[data-tipo="roja"]     { border-color: var(--rojo-falta); border-width: 3px; }
+    .cat-4 .flip-frente[data-tipo="verde"]    { border-color: var(--verde-tarj); border-width: 3px; }
+    .cat-4 .flip-frente[data-tipo="azul"]     { border-color: var(--azul-tarj); border-width: 3px; }
+
+    /* ================================================================
+       SIN RESULTADOS
+    ================================================================ */
+    .sin-resultados {
+      display: none;
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--gris-claro);
+    }
+
+    .sin-resultados.visible { display: block; }
+
+    .sin-resultados-icono {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .sin-resultados p {
+      font-size: 1.05rem;
+      color: var(--gris);
+    }
+
+    /* ================================================================
+       ANIMACIONES DE ENTRADA
+    ================================================================ */
+    @keyframes entradaArriba {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .flip-card, .frase-card {
+      animation: entradaArriba 0.38s ease both;
+    }
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    footer {
+      background: var(--negro);
+      color: var(--crema-oscura);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: 640px; margin: 0 auto; }
+
+    .footer-logo {
+      font-family: var(--font-titulo);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--maiz-claro);
+      margin-bottom: 1rem;
+    }
+
+    .footer-info {
+      font-size: 0.83rem;
+      line-height: 2;
+      opacity: 0.75;
+    }
+
+    .footer-declaracion {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--maiz-claro);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .footer-año {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      opacity: 0.5;
+    }
+
+    /* ================================================================
+       ACCESIBILIDAD: foco visible
+    ================================================================ */
+    .flip-card:focus-visible {
+      outline: 3px solid var(--maiz-claro);
+      outline-offset: 3px;
+      border-radius: var(--radio);
+    }
+
+    /* ================================================================
+       RESPONSIVE — Mobile first
+    ================================================================ */
+    @media (max-width: 480px) {
+      .grilla {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .flip-card {
+        height: 165px;
+      }
+      .icono-carta {
+        font-size: 2rem;
+      }
+      .grilla-frases {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .grilla {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 769px) {
+      .grilla {
+        grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+      }
+      .controles-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .fila-busqueda {
+        flex: 1;
+        min-width: 280px;
+      }
+      .indicador-estudio,
+      .conteo-resultados,
+      .tabs-categorias {
+        width: 100%;
+      }
+    }
+
+    /* ================================================================
+       ESTILOS DE IMPRESIÓN — Para uso como material físico de respaldo
+       Se imprime con traducciones siempre visibles
+    ================================================================ */
+    @media print {
+      /* Ocultar controles interactivos */
+      .controles, .btn-audio, .pista-toca,
+      .intro-pasos, .indicador-estudio { display: none !important; }
+
+      /* Quitar sticky del header */
+      .controles { position: static !important; }
+
+      body {
+        background: white;
+        font-size: 11pt;
+      }
+
+      header {
+        background: none !important;
+        color: black !important;
+        padding: 1rem;
+        border-bottom: 3px solid black;
+      }
+
+      header::before, header::after { display: none; }
+
+      .titulo-nasa { color: black !important; font-size: 16pt; }
+      .titulo-esp  { color: black !important; font-size: 12pt; }
+      .header-subtitulo, .header-territorio { color: black !important; opacity: 0.7; }
+      .emblema { border: 1px solid black; background: none !important; }
+      .emblema-linea { background: black !important; }
+
+      .intro { background: none !important; color: black !important; border: 1px solid black; margin: 0.5rem; border-radius: 8px; }
+      .intro-texto strong { color: black !important; text-decoration: underline; }
+
+      /* Grilla compacta para impresión */
+      .grilla {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
+      }
+      .grilla-frases {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      /* Mostrar ambos lados de la carta en impresión */
+      .flip-card {
+        height: auto !important;
+        min-height: 100px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .flip-inner {
+        transform: none !important;
+        position: static !important;
+        display: block;
+        height: auto !important;
+        transform-style: flat !important;
+      }
+
+      .flip-frente {
+        position: static !important;
+        backface-visibility: visible !important;
+        -webkit-backface-visibility: visible !important;
+        transform: none !important;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        padding: 0.75rem 0.5rem 0.4rem;
+      }
+
+      .flip-dorso {
+        position: static !important;
+        backface-visibility: visible !important;
+        -webkit-backface-visibility: visible !important;
+        transform: none !important;
+        color: black !important;
+        background: #f0f0f0 !important;
+        border: none !important;
+        border-top: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0.4rem 0.5rem 0.75rem;
+      }
+
+      .palabra-nasa { color: black !important; opacity: 1 !important; }
+      .nombre-categoria { color: black !important; }
+
+      /* Frases */
+      .frase-card {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .frase-traduccion { opacity: 1 !important; }
+
+      /* Footer impresión */
+      footer {
+        background: none !important;
+        color: black !important;
+        border-top: 2px solid black;
+        font-size: 9pt;
+      }
+      .footer-logo { color: black !important; }
+      .footer-declaracion { color: black !important; }
+
+      /* Leyenda de impresión */
+      .patron-nasa, .patron-nasa-2 { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header>
+    <div class="header-contenido">
+      <div class="header-emblemas">
+        <div class="emblema" title="Fútbol">⚽</div>
+        <div class="emblema-linea"></div>
+        <div class="emblema" title="Pueblo Nasa">🌿</div>
+        <div class="emblema-linea"></div>
+        <div class="emblema" title="CEFIC La Estrella">🏫</div>
+      </div>
+
+      <h1 class="titulo-principal">
+        <span class="titulo-nasa">Pwesa'hnxi Yuwete Jxpe'hnxi</span>
+        <span class="titulo-esp">Términos del Fútbol en Nuestra Lengua</span>
+      </h1>
+
+      <p class="header-subtitulo">
+        Fortaleciendo el kwe'sx we'wnxi mediante el deporte
+      </p>
+
+      <div class="header-territorio">
+        🏔️ Territorio Sa'th Tama Taba &nbsp;·&nbsp; Caldono, Cauca
+      </div>
+    </div>
+  </header>
+
+  <!-- Separador geométrico tipo tejido nasa -->
+  <div class="patron-nasa-2"></div>
+
+  <!-- ============================================================
+       INTRODUCCIÓN
+  ============================================================ -->
+  <div class="intro">
+    <p class="intro-texto">
+      Este trabajo está encaminado a fortalecer el <strong>kwe'sx we'wnxi</strong> mediante la estrategia del fútbol
+      con las niñas, niños, señoritas y jóvenes de las <strong>57 sedes educativas</strong> del territorio.
+      ¡Aprendamos nuestra lengua jugando!
+    </p>
+    <div class="intro-pasos">
+      <div class="paso">🔍 Explora las categorías</div>
+      <div class="paso">🗣️ Lee en voz alta</div>
+      <div class="paso">🤝 Practica con compañeros</div>
+      <div class="paso">⚽ Úsalas en la cancha</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CONTROLES (sticky)
+  ============================================================ -->
+  <div class="controles" id="controles">
+    <div class="controles-inner">
+
+      <!-- Búsqueda + botón estudio -->
+      <div class="fila-busqueda">
+        <input
+          type="text"
+          class="buscador"
+          id="buscador"
+          placeholder="Buscar en kwe'sx we'wnxi o español…"
+          autocomplete="off"
+          aria-label="Buscar palabras"
+        >
+        <button class="btn-estudio" id="btnEstudio" onclick="toggleEstudio()" aria-pressed="false">
+          🎯 Modo Estudio
+        </button>
+      </div>
+
+      <!-- Indicador de modo estudio -->
+      <div class="indicador-estudio" id="indicadorEstudio" aria-live="polite">
+        🎯 MODO ESTUDIO ACTIVO — ¡Intenta recordar la palabra antes de voltear la tarjeta!
+      </div>
+
+      <!-- Tabs de categorías -->
+      <div class="tabs-categorias" id="tabsCategorias" role="tablist" aria-label="Filtrar por categoría">
+        <button class="tab activo" data-cat="-1" onclick="filtrarCategoria(-1)" role="tab" aria-selected="true">
+          🌐 Todas
+        </button>
+        <!-- Generado por JS -->
+      </div>
+
+      <!-- Contador de resultados -->
+      <div class="conteo-resultados" id="conteoResultados" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+  ============================================================ -->
+  <main class="contenido-principal" id="contenidoPrincipal" role="main">
+    <!-- Generado por JS -->
+    <div class="sin-resultados" id="sinResultados" aria-live="polite">
+      <div class="sin-resultados-icono">🔍</div>
+      <p>No se encontraron palabras para "<strong id="terminoBuscado"></strong>"</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gris-claro);">
+        Intenta en kwe'sx we'wnxi o en español.
+      </p>
+    </div>
+  </main>
+
+  <!-- Separador -->
+  <div class="patron-nasa"></div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">⚽ Pwesa'hnxi Yuwete Jxpe'hnxi</div>
+      <div class="footer-info">
+        CEFIC La Estrella · La Laguna Siberia, Municipio de Caldono, Cauca, Colombia<br>
+        Territorio Indígena Sa'th Tama Taba · 57 Sedes Educativas<br>
+        Sistema Educativo Indígena Propio (SEIP) · Pueblo Nasa
+      </div>
+      <div class="footer-declaracion">
+        "La lengua, el territorio y el saber son nuestros."<br>
+        Iniciativa comunitaria para la revitalización lingüística del kwe'sx we'wnxi
+      </div>
+      <div class="footer-año">© 2024 — Autoría Comunitaria Pueblo Nasa</div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — Datos y lógica interactiva
+       Para agregar nuevas palabras: busca el array de la categoría
+       correspondiente y añade { nasa: "...", esp: "...", icon: "..." }
+  ============================================================ -->
+  <script>
+    // ===========================================================
+    // BASE DE DATOS DE VOCABULARIO
+    // Cada categoría tiene: id, nombre, icono, color CSS, palabras[]
+    // Cada palabra tiene: nasa (kwe'sx we'wnxi), esp (español), icon (emoji)
+    // ===========================================================
+    const CATEGORIAS = [
+      {
+        id: 0,
+        nombre: "Elementos del Juego",
+        icono: "⚽",
+        colorCss: "cat-0",
+        palabras: [
+          { nasa: "Kajxad",                          esp: "Balón / Pelota",                     icon: "⚽" },
+          { nasa: "Vxitx",                           esp: "Portería",                           icon: "🥅" },
+          { nasa: "Dxi'j swẽth",                    esp: "Penal",                              icon: "🎯" },
+          { nasa: "Pxahju kutxi'jnxisa",             esp: "Centro de la cancha",                icon: "⭕" },
+          { nasa: "Puzaju ki'pnxi",                  esp: "Tiro de esquina / Córner",           icon: "🚩" },
+          { nasa: "Puçhuh kutxi'jnxi",               esp: "Saque de banda",                     icon: "🤲" },
+          { nasa: "Ku'le ki'pnxi",                   esp: "Tiro libre",                         icon: "🦶" },
+          { nasa: "Yeckhe ũsnxi",                    esp: "Fuera de lugar / Fuera de juego",    icon: "🚫" },
+          { nasa: "Peetxi yaakhnxi",                 esp: "Autogol",                            icon: "😅" },
+          { nasa: "Yupuyak pwesa'j",                 esp: "Barrera",                            icon: "🧱" },
+          { nasa: "Je'zus dxi'pnxi",                 esp: "Tiempo extra / Dos jugadas",         icon: "⏱️" },
+          { nasa: "Kha'da'tx",                       esp: "Empate",                             icon: "⚖️" },
+          { nasa: "Aknxi",                           esp: "Hacer gol",                          icon: "🎉" },
+          { nasa: "Kajxad kasehnxi / kasehk",        esp: "Salió el balón",                     icon: "↗️" },
+        ]
+      },
+      {
+        id: 1,
+        nombre: "Personas y Roles",
+        icono: "👥",
+        colorCss: "cat-1",
+        palabras: [
+          { nasa: "Ufx putsa / Ufxsa",               esp: "Árbitro",                            icon: "🧑‍⚖️" },
+          { nasa: "Ufxsa's pu'ҫxsa",                 esp: "Juez de línea / Asistente",          icon: "🏃" },
+          { nasa: "Dxi'ja'sa",                       esp: "Técnico / Entrenador",               icon: "📋" },
+          { nasa: "Dxi'pu'ҫxsa",                     esp: "Capitán",                            icon: "🎖️" },
+          { nasa: "Aphsaa",                          esp: "Arquero / Portero",                  icon: "🧤" },
+          { nasa: "E'skhe pwesa'jsa",                esp: "Defensa",                            icon: "🛡️" },
+          { nasa: "Yeckhe pwesasa",                  esp: "Delantero",                          icon: "🚀" },
+          { nasa: "Pxahte pwe'sa'jsa",               esp: "Mediocampista",                      icon: "🔄" },
+          { nasa: "Puҫhsu pwesa'jsa",                esp: "Volante",                            icon: "💨" },
+          { nasa: "Pu'yaksa",                        esp: "Suplente / Jugador en banca",        icon: "🪑" },
+          { nasa: "Thle",                            esp: "Narrador",                           icon: "🎙️" },
+          { nasa: "Thle's pu'ҫxsa",                  esp: "Comentarista",                       icon: "💬" },
+          { nasa: "Papêysa",                         esp: "Entrevistador",                      icon: "📹" },
+          { nasa: "Eçte sũtxsaa / ãsxsa",            esp: "Planillera",                         icon: "📝" },
+          { nasa: "Pwesa'eç",                        esp: "Planilla",                           icon: "📄" },
+        ]
+      },
+      {
+        id: 2,
+        nombre: "Implementos y Uniforme",
+        icono: "👕",
+        colorCss: "cat-2",
+        palabras: [
+          { nasa: "Kmisa",                           esp: "Camiseta",                           icon: "👕" },
+          { nasa: "Pwesa'j jat muçx",                esp: "Pantaloneta / Short deportivo",      icon: "🩳" },
+          { nasa: "Çxida phuph",                     esp: "Medias",                             icon: "🧦" },
+          { nasa: "Pil phuph",                       esp: "Canilleras / Espinilleras",          icon: "🦵" },
+          { nasa: "Pelkatxi",                        esp: "Guayos / Zapatos de fútbol",         icon: "👟" },
+          { nasa: "Jxũknxisa",                       esp: "Cordones",                           icon: "🎀" },
+          { nasa: "Wejxa'jxa",                       esp: "Banderines de córner",               icon: "🚩" },
+          { nasa: "Pwesa'jsa jathnxi",               esp: "Uniformes",                          icon: "👔" },
+          { nasa: "Pwesa'j eç",                      esp: "Carnet / Identificación",            icon: "🪪" },
+          { nasa: "Eçxwa dxi'j",                     esp: "Reglamento",                         icon: "📖" },
+          { nasa: "Kajxad pwesa'jthe jxpe'hnxi",     esp: "Implementos deportivos",             icon: "🎒" },
+        ]
+      },
+      {
+        id: 3,
+        nombre: "Acciones y Faltas",
+        icono: "⚡",
+        colorCss: "cat-3",
+        palabras: [
+          { nasa: "Juuna'pwesa'jnxi",                esp: "Falta",                              icon: "🚫" },
+          { nasa: "Kuseju dxi'pnxi",                 esp: "Mano (falta con la mano)",           icon: "✋" },
+          { nasa: "Pelkatxi muç",                    esp: "Tacle / Tackle",                     icon: "🦵" },
+          { nasa: "Ku'ta pwe'sx",                    esp: "Hombro con hombro",                  icon: "💪" },
+          { nasa: "Çxida spahden",                   esp: "Zancadilla",                         icon: "🦶" },
+          { nasa: "Yu'pthehn",                       esp: "Cambio / Sustitución",               icon: "🔄" },
+          { nasa: "Pdxi'putx",                       esp: "Enfrentar / Jugar contra",           icon: "⚔️" },
+          { nasa: "Ufxsa (acción)",                  esp: "Pitar (acción del árbitro)",         icon: "📢" },
+          { nasa: "Pases (Mtxuhde)",                 esp: "Pases",                              icon: "➡️" },
+          { nasa: "Kaku'ju'k",                       esp: "Meleos / Disputa del balón",         icon: "💥" },
+          { nasa: "Mki'p",                           esp: "¡Pégale! / Disparar al arco",       icon: "🦶" },
+          { nasa: "Çxkamitxçxa mkahta",              esp: "Haga una chilena / Bicicleta",       icon: "🤸" },
+          { nasa: "Wejxkwe çxhãçxha kahta",          esp: "Pégale con más fuerza",              icon: "💪" },
+          { nasa: "Kajxada's ew kuutxi'j",           esp: "Saque bien el balón",                icon: "🎯" },
+          { nasa: "Kajxada's kiwete ki'pçxa kahta",  esp: "Coloque el balón en el piso",        icon: "⬇️" },
+          { nasa: "Pxyahte ki'pçxa kuutxi'j",        esp: "Saque del centro",                   icon: "⭕" },
+          { nasa: "Yaçkhe peyçxa mkah / mki'p",      esp: "Haga pases adelante con precisión",  icon: "🎯" },
+          { nasa: "Kajxada's jxkwetuh mpa'ka",       esp: "Reciba el balón con la cabeza",      icon: "🤯" },
+          { nasa: "Puzaju katanxi's jxkwetuh mpa'ka",esp: "Reciba con la cabeza el tiro de esquina", icon: "🚩" },
+          { nasa: "Dud kajxada's pakweya mkaajwe",   esp: "Manden rápido a buscar el balón",    icon: "🏃" },
+        ]
+      },
+      {
+        id: 4,
+        nombre: "Tarjetas y Sanciones",
+        icono: "🟨",
+        colorCss: "cat-4",
+        // Nota: el campo "tipo" se usa para colorear el borde
+        palabras: [
+          { nasa: "Txwesnxisa",        esp: "Tarjeta",          icon: "🃏",  tipo: "" },
+          { nasa: "Txwesnxisa sxkikx", esp: "Tarjeta Amarilla", icon: "🟨",  tipo: "amarilla" },
+          { nasa: "Txwesnxisa beh",    esp: "Tarjeta Roja",     icon: "🟥",  tipo: "roja" },
+          { nasa: "Txwesnxisa çêy",    esp: "Tarjeta Verde",    icon: "🟩",  tipo: "verde" },
+          { nasa: "Txwesnxisa êeçêy",  esp: "Tarjeta Azul",     icon: "🟦",  tipo: "azul" },
+        ]
+      },
+      {
+        id: 5,
+        nombre: "Frases y Recomendaciones",
+        icono: "💬",
+        colorCss: "cat-5",
+        esFrases: true,  // Indica que esta categoría usa tarjetas de frase (sin volteo)
+        palabras: [
+          { nasa: "Weçxan kuse mkaatu'jwe",             esp: "Saluden y den la mano al equipo contrario",    icon: "🤝" },
+          { nasa: "Ufxsa's kazx we'wnuwe",              esp: "No hablen mal al árbitro",                     icon: "🤐" },
+          { nasa: "Tud Yu'pthe'jwe pwesajxa",           esp: "Cambien rápido para jugar",                    icon: "⚡" },
+          { nasa: "Txakte kase'jwe takjxatha'w",        esp: "Salgan a la cancha, vamos a empezar",          icon: "🏃" },
+          { nasa: "Ufxsa'ew newe'wna beh pwesasatx",    esp: "Árbitro, recomiende a los jugadores",          icon: "📢" },
+          { nasa: "Newe'wnxi",                          esp: "Recomendaciones / Consejos",                   icon: "💡" },
+          { nasa: "Ju'j pwesa'jthe juegũ",              esp: "Juego violento",                               icon: "⚠️" },
+          { nasa: "Kaajxada's neejxũ",                  esp: "Vaya, traiga el balón",                        icon: "🏃" },
+        ]
+      }
+    ];
+
+    // ===========================================================
+    // ESTADO DE LA APLICACIÓN
+    // ===========================================================
+    let categoriaActiva = -1;  // -1 = todas
+    let busqueda = "";
+    let modoEstudio = false;
+
+    // ===========================================================
+    // INICIALIZAR TABS
+    // ===========================================================
+    function inicializarTabs() {
+      const contenedor = document.getElementById('tabsCategorias');
+      CATEGORIAS.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'tab';
+        btn.dataset.cat = cat.id;
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', 'false');
+        btn.textContent = cat.icono + ' ' + cat.nombre;
+        btn.onclick = () => filtrarCategoria(cat.id);
+        contenedor.appendChild(btn);
+      });
+    }
+
+    // ===========================================================
+    // RENDERIZAR TODO
+    // ===========================================================
+    function renderizarTodo() {
+      const main = document.getElementById('contenidoPrincipal');
+      const sinResultados = document.getElementById('sinResultados');
+
+      // Limpiar secciones anteriores (mantener sinResultados)
+      main.querySelectorAll('.seccion-categoria').forEach(el => el.remove());
+
+      let totalVisible = 0;
+
+      CATEGORIAS.forEach(cat => {
+        // Filtrar por categoría activa
+        if (categoriaActiva !== -1 && cat.id !== categoriaActiva) return;
+
+        // Filtrar por búsqueda
+        const q = busqueda.toLowerCase();
+        const palabrasFiltradas = cat.palabras.filter(p => {
+          if (!q) return true;
+          return p.nasa.toLowerCase().includes(q) || p.esp.toLowerCase().includes(q);
+        });
+
+        if (palabrasFiltradas.length === 0) return;
+        totalVisible += palabrasFiltradas.length;
+
+        // Crear sección
+        const seccion = document.createElement('section');
+        seccion.className = 'seccion-categoria';
+        seccion.setAttribute('aria-label', cat.nombre);
+
+        // Encabezado de categoría
+        seccion.innerHTML = `
+          <div class="encabezado-categoria cat-color-${cat.id}">
+            <span class="icono-categoria" aria-hidden="true">${cat.icono}</span>
+            <h2 class="nombre-categoria">${cat.nombre}</h2>
+            <span class="badge-conteo" aria-label="${palabrasFiltradas.length} términos">${palabrasFiltradas.length} términos</span>
+          </div>
+        `;
+
+        // Grilla de tarjetas
+        const grilla = document.createElement('div');
+        grilla.className = cat.esFrases ? 'grilla grilla-frases' : 'grilla';
+
+        palabrasFiltradas.forEach((palabra, idx) => {
+          const tarjeta = cat.esFrases
+            ? crearTarjetaFrase(palabra, cat, idx)
+            : crearFlipCard(palabra, cat, idx);
+          grilla.appendChild(tarjeta);
+        });
+
+        seccion.appendChild(grilla);
+        main.insertBefore(seccion, sinResultados);
+      });
+
+      // Actualizar conteo
+      const conteoEl = document.getElementById('conteoResultados');
+      if (busqueda) {
+        conteoEl.textContent = `${totalVisible} resultado${totalVisible !== 1 ? 's' : ''} para "${busqueda}"`;
+      } else {
+        conteoEl.textContent = `${totalVisible} términos en total · ${CATEGORIAS.length} categorías`;
+      }
+
+      // Mostrar/ocultar sin resultados
+      if (totalVisible === 0) {
+        sinResultados.classList.add('visible');
+        document.getElementById('terminoBuscado').textContent = busqueda;
+      } else {
+        sinResultados.classList.remove('visible');
+      }
+    }
+
+    // ===========================================================
+    // CREAR TARJETA VOLTEADORA (flip card)
+    // Para categorías 0–4
+    // ===========================================================
+    function crearFlipCard(palabra, cat, idx) {
+      const div = document.createElement('div');
+      div.className = `flip-card ${cat.colorCss}`;
+      div.style.animationDelay = `${idx * 0.035}s`;
+      div.setAttribute('role', 'button');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-label', `${palabra.nasa}: ${palabra.esp}. Toca para voltear.`);
+
+      // Atributo de tipo para tarjetas de sanción (borde de color)
+      const tipoAtrib = palabra.tipo ? `data-tipo="${palabra.tipo}"` : '';
+
+      div.innerHTML = `
+        <div class="flip-inner">
+          <div class="flip-frente" ${tipoAtrib}>
+            <div class="icono-carta" aria-hidden="true">${palabra.icon}</div>
+            <div class="palabra-nasa" lang="nsh">${palabra.nasa}</div>
+            <div class="pista-toca" aria-hidden="true">toca para ver →</div>
+          </div>
+          <div class="flip-dorso">
+            <div class="icono-carta" aria-hidden="true">${palabra.icon}</div>
+            <div class="traduccion">${palabra.esp}</div>
+            <div class="palabra-nasa-small" lang="nsh">${palabra.nasa}</div>
+            <button class="btn-audio" title="Audio en kwe'sx we'wnxi — Próximamente" aria-label="Audio próximamente">
+              🔊 Próximamente
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Voltear al hacer clic
+      div.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-audio')) return;
+        div.classList.toggle('volteada');
+        const volteada = div.classList.contains('volteada');
+        div.setAttribute('aria-label',
+          volteada
+            ? `${palabra.esp} (${palabra.nasa}). Toca para voltear de vuelta.`
+            : `${palabra.nasa}: ${palabra.esp}. Toca para voltear.`
+        );
+      });
+
+      // Voltear con teclado (Enter / Espacio)
+      div.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          div.click();
+        }
+      });
+
+      return div;
+    }
+
+    // ===========================================================
+    // CREAR TARJETA DE FRASE (sin volteo, categoría 5)
+    // ===========================================================
+    function crearTarjetaFrase(palabra, cat, idx) {
+      const div = document.createElement('div');
+      div.className = 'frase-card';
+      div.style.animationDelay = `${idx * 0.05}s`;
+      div.setAttribute('lang', 'es');
+
+      div.innerHTML = `
+        <div class="frase-nasa" lang="nsh">
+          <span class="frase-icono" aria-hidden="true">${palabra.icon}</span>
+          <span>${palabra.nasa}</span>
+        </div>
+        <div class="frase-traduccion">→ ${palabra.esp}</div>
+        <button class="btn-audio" style="margin-top: 0.75rem;" title="Audio próximamente" aria-label="Audio próximamente">
+          🔊 Pronunciación próximamente
+        </button>
+      `;
+
+      return div;
+    }
+
+    // ===========================================================
+    // FILTRAR POR CATEGORÍA
+    // ===========================================================
+    function filtrarCategoria(catId) {
+      categoriaActiva = catId;
+
+      // Actualizar estado visual de los tabs
+      document.querySelectorAll('.tab').forEach(btn => {
+        const activo = parseInt(btn.dataset.cat) === catId;
+        btn.classList.toggle('activo', activo);
+        btn.setAttribute('aria-selected', activo ? 'true' : 'false');
+      });
+
+      renderizarTodo();
+
+      // Hacer scroll al contenido principal suavemente
+      document.getElementById('contenidoPrincipal')
+        .scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ===========================================================
+    // BÚSQUEDA EN TIEMPO REAL
+    // ===========================================================
+    function manejarBusqueda(e) {
+      busqueda = e.target.value.trim();
+
+      // Al buscar, mostrar todas las categorías
+      if (busqueda) {
+        categoriaActiva = -1;
+        document.querySelectorAll('.tab').forEach(btn => {
+          const activo = parseInt(btn.dataset.cat) === -1;
+          btn.classList.toggle('activo', activo);
+          btn.setAttribute('aria-selected', activo ? 'true' : 'false');
+        });
+      }
+
+      renderizarTodo();
+    }
+
+    // ===========================================================
+    // MODO ESTUDIO
+    // Oculta la palabra en kwe'sx we'wnxi en el frente de las tarjetas
+    // para que el estudiante intente recordarla mirando solo el ícono.
+    // Las frases ocultan la traducción al español.
+    // ===========================================================
+    function toggleEstudio() {
+      modoEstudio = !modoEstudio;
+      document.body.classList.toggle('modo-estudio', modoEstudio);
+
+      const btn = document.getElementById('btnEstudio');
+      btn.classList.toggle('activo', modoEstudio);
+      btn.setAttribute('aria-pressed', modoEstudio ? 'true' : 'false');
+      btn.innerHTML = modoEstudio ? '👁️ Ver Traducciones' : '🎯 Modo Estudio';
+
+      const indicador = document.getElementById('indicadorEstudio');
+      indicador.classList.toggle('visible', modoEstudio);
+
+      // En modo estudio, desvoltar todas las tarjetas
+      if (modoEstudio) {
+        document.querySelectorAll('.flip-card.volteada').forEach(c => c.classList.remove('volteada'));
+      }
+    }
+
+    // ===========================================================
+    // INICIALIZACIÓN
+    // ===========================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      inicializarTabs();
+      renderizarTodo();
+
+      // Conectar buscador
+      document.getElementById('buscador').addEventListener('input', manejarBusqueda);
+
+      // Limpiar búsqueda con Escape
+      document.getElementById('buscador').addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.target.value = '';
+          busqueda = '';
+          renderizarTodo();
+        }
+      });
+    });
+
+    // ===========================================================
+    // SERVICE WORKER (PWA básica — offline)
+    // Para activar el funcionamiento sin internet:
+    // 1. Guarda este HTML como "index.html"
+    // 2. Crea un archivo "sw.js" en la misma carpeta con el contenido:
+    //
+    //    const CACHE = 'pwesahnxi-v1';
+    //    self.addEventListener('install', e => e.waitUntil(
+    //      caches.open(CACHE).then(c => c.add('/'))
+    //    ));
+    //    self.addEventListener('fetch', e => e.respondWith(
+    //      caches.match(e.request).then(r => r || fetch(e.request))
+    //    ));
+    //
+    // 3. Descomenta el bloque siguiente:
+    //
+    // if ('serviceWorker' in navigator) {
+    //   navigator.serviceWorker.register('/sw.js')
+    //     .then(() => console.log('SW registrado'))
+    //     .catch(err => console.warn('SW error:', err));
+    // }
+    // ===========================================================
+  </script>
+</body>
+</html>
