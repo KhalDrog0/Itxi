@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vocabulario de fútbol en kwe'sx we'wnxi — Territorio Sa'th Tama Taba, Caldono, Cauca">
+  <meta name="theme-color" content="#6B3320">
+
+  <title>Pwesa'hnxi Yuwete Jxpe'hnxi — Términos del Fútbol</title>
+
+  <!-- Fuentes: Baloo 2 (títulos) + Nunito (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Estilos modulares -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/controls.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/print.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header>
+    <div class="header-contenido">
+      <div class="header-emblemas">
+        <div class="emblema" title="Fútbol" aria-hidden="true">⚽</div>
+        <div class="emblema-linea" aria-hidden="true"></div>
+        <div class="emblema" title="Pueblo Nasa" aria-hidden="true">🌿</div>
+        <div class="emblema-linea" aria-hidden="true"></div>
+        <div class="emblema" title="CEFIC La Estrella" aria-hidden="true">🏫</div>
+      </div>
+
+      <h1 class="titulo-principal">
+        <span class="titulo-nasa">Pwesa'hnxi Yuwete Jxpe'hnxi</span>
+        <span class="titulo-esp">Términos del Fútbol en Nuestra Lengua</span>
+      </h1>
+
+      <p class="header-subtitulo">
+        Fortaleciendo el kwe'sx we'wnxi mediante el deporte
+      </p>
+
+      <div class="header-territorio">
+        🏔️ Territorio Sa'th Tama Taba &nbsp;·&nbsp; Caldono, Cauca
+      </div>
+    </div>
+  </header>
+
+  <!-- Separador geométrico tipo tejido nasa -->
+  <div class="patron-nasa-2" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       SECCIÓN INTRODUCTORIA
+  ============================================================ -->
+  <section class="intro" aria-label="Introducción al proyecto">
+    <p class="intro-texto">
+      Este trabajo está encaminado a fortalecer el
+      <strong>kwe'sx we'wnxi</strong> mediante la estrategia del fútbol
+      con las niñas, niños, señoritas y jóvenes de las
+      <strong>57 sedes educativas</strong> del territorio.
+      ¡Aprendamos nuestra lengua jugando!
+    </p>
+    <div class="intro-pasos" role="list" aria-label="Pasos para usar esta guía">
+      <div class="paso" role="listitem">🔍 Explora las categorías</div>
+      <div class="paso" role="listitem">🗣️ Lee en voz alta</div>
+      <div class="paso" role="listitem">🤝 Practica con compañeros</div>
+      <div class="paso" role="listitem">⚽ Úsalas en la cancha</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTROLES (buscador + tabs de categorías — sticky)
+  ============================================================ -->
+  <div class="controles" id="controles">
+    <div class="controles-inner">
+
+      <div class="fila-busqueda">
+        <input
+          type="search"
+          class="buscador"
+          id="buscador"
+          placeholder="Buscar en kwe'sx we'wnxi o español…"
+          autocomplete="off"
+          aria-label="Buscar palabras en kwe'sx we'wnxi o español"
+        >
+        <button
+          class="btn-estudio"
+          id="btnEstudio"
+          aria-pressed="false"
+        >
+          🎯 Modo Estudio
+        </button>
+      </div>
+
+      <div
+        class="indicador-estudio"
+        id="indicadorEstudio"
+        role="status"
+        aria-live="polite"
+      >
+        🎯 MODO ESTUDIO ACTIVO — ¡Intenta recordar la palabra antes de voltear la tarjeta!
+      </div>
+
+      <nav
+        class="tabs-categorias"
+        id="tabsCategorias"
+        role="tablist"
+        aria-label="Filtrar por categoría de vocabulario"
+      >
+        <!-- Generado dinámicamente por app.js -->
+      </nav>
+
+      <div class="conteo-resultados" id="conteoResultados" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL — Generado por render.js
+  ============================================================ -->
+  <main class="contenido-principal" id="contenidoPrincipal" role="main">
+    <!-- Las secciones y tarjetas se insertan aquí por JavaScript -->
+
+    <div class="sin-resultados" id="sinResultados" aria-live="assertive" hidden>
+      <div class="sin-resultados-icono" aria-hidden="true">🔍</div>
+      <p>No se encontraron palabras para
+        "<strong id="terminoBuscado"></strong>"
+      </p>
+      <p class="sin-resultados-ayuda">
+        Intenta buscar en kwe'sx we'wnxi o en español.
+      </p>
+    </div>
+  </main>
+
+  <!-- Separador -->
+  <div class="patron-nasa" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">⚽ Pwesa'hnxi Yuwete Jxpe'hnxi</div>
+      <div class="footer-info">
+        CEFIC La Estrella · La Laguna Siberia, Municipio de Caldono, Cauca, Colombia<br>
+        Territorio Indígena Sa'th Tama Taba · 57 Sedes Educativas<br>
+        Sistema Educativo Indígena Propio (SEIP) · Pueblo Nasa
+      </div>
+      <div class="footer-declaracion">
+        "La lengua, el territorio y el saber son nuestros."<br>
+        Iniciativa comunitaria para la revitalización lingüística del kwe'sx we'wnxi
+      </div>
+      <div class="footer-año">© 2024 — Autoría Comunitaria Pueblo Nasa</div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS — Orden de carga importante:
+       1. data.js     → define el vocabulario (CATEGORIAS)
+       2. audio.js    → define AudioManager (necesita data)
+       3. render.js   → funciones de DOM (necesita data + audio)
+       4. app.js      → inicializa todo (necesita los tres anteriores)
+  ============================================================ -->
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
