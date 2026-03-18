@@ -1,0 +1,164 @@
+/*
+ * print.css
+ * ─────────────────────────────────────────────────────────────
+ * Estilos para impresión en papel.
+ * Se activa automáticamente con Ctrl+P / Cmd+P.
+ * Genera un material físico de respaldo con ambas caras visibles.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+@media print {
+
+  /* ── Elementos a ocultar en impresión ── */
+  .controles,
+  .btn-audio,
+  .pista-toca,
+  .intro-pasos,
+  .indicador-estudio,
+  .patron-nasa,
+  .patron-nasa-2 {
+    display: none !important;
+  }
+
+  /* ── Reset para impresión ── */
+  body {
+    background: white;
+    font-size: 11pt;
+    color: black;
+  }
+
+  /* ── Header simplificado ── */
+  header {
+    background: none !important;
+    color: black !important;
+    padding: 1rem;
+    border-bottom: 3px solid black;
+  }
+
+  header::before,
+  header::after {
+    display: none;
+  }
+
+  .titulo-nasa         { color: black !important; font-size: 16pt; }
+  .titulo-esp          { color: black !important; font-size: 12pt; }
+  .header-subtitulo,
+  .header-territorio   { color: black !important; opacity: 0.7; }
+
+  .emblema             { border: 1px solid black; background: none !important; }
+  .emblema-linea       { background: black !important; }
+
+  /* ── Intro ── */
+  .intro {
+    background: none !important;
+    color: black !important;
+    border: 1px solid black;
+    margin: 0.5rem;
+    border-radius: 8px;
+  }
+
+  .intro-texto strong {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  /* ── Grillas compactas ── */
+  .grilla {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .grilla-frases {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* ── Flip cards: mostrar ambas caras ── */
+  .flip-card {
+    height: auto !important;
+    min-height: 100px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  /* Desactivar el mecanismo 3D para impresión */
+  .flip-inner {
+    transform: none !important;
+    position: static !important;
+    display: block;
+    height: auto !important;
+    transform-style: flat !important;
+  }
+
+  /* Mostrar el frente normalmente */
+  .flip-frente {
+    position: static !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+    transform: none !important;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0.75rem 0.5rem 0.4rem;
+  }
+
+  /* Mostrar el dorso (normalmente estaría oculto) */
+  .flip-dorso {
+    position: static !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+    transform: none !important;
+    color: black !important;
+    background: #f0f0f0 !important;
+    border: none !important;
+    border-top: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0.4rem 0.5rem 0.75rem;
+  }
+
+  /* Asegurar visibilidad de textos en impresión */
+  .palabra-nasa           { color: black !important; opacity: 1 !important; }
+  .nombre-categoria       { color: black !important; }
+  .titulo-principal       { color: black !important; }
+  .frase-traduccion       { opacity: 1 !important; }
+
+  /* ── Tarjetas de frases ── */
+  .frase-card {
+    border: 1px solid #ccc !important;
+    border-left: 3px solid #555 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: none !important;
+    color: black !important;
+    border-top: 2px solid black;
+    font-size: 9pt;
+  }
+
+  .footer-logo        { color: black !important; }
+  .footer-declaracion { color: black !important; }
+  .footer-info        { opacity: 1; }
+
+  /* ── Encabezados de categorías ── */
+  .encabezado-categoria::before {
+    background: #555 !important;
+  }
+
+  .badge-conteo {
+    background: #ddd;
+    color: #333;
+  }
+
+  /* Márgenes de página */
+  @page {
+    margin: 1.5cm 1.2cm;
+  }
+}

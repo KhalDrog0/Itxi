@@ -1,0 +1,105 @@
+/*
+ * variables.css
+ * ─────────────────────────────────────────────────────────────
+ * TOKENS DE DISEÑO — Pwesa'hnxi Yuwete Jxpe'hnxi
+ * Aquí viven todos los valores reutilizables del sistema visual.
+ * Para cambiar el aspecto de la página, edita solo este archivo.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+:root {
+
+  /* ============================================================
+     PALETA DE COLORES — Inspirada en la tierra y el territorio
+     del Pueblo Nasa, Caldono, Cauca
+  ============================================================ */
+
+  /* Tonos tierra */
+  --arcilla:        #6B3320;   /* Café arcilla oscuro — color principal */
+  --terracota:      #B85C38;   /* Terracota — acento primario */
+  --tierra:         #9B4B2A;   /* Tierra media */
+  --tierra-clara:   #D2876A;   /* Tierra suave */
+
+  /* Verdes del bosque */
+  --bosque:         #2D5A1B;   /* Verde bosque — categoría Roles */
+  --bosque-claro:   #4A8B35;   /* Verde medio */
+  --hoja:           #7AB648;   /* Verde hoja */
+
+  /* Amarillos del maíz */
+  --maiz:           #C8950E;   /* Amarillo maíz oscuro */
+  --maiz-claro:     #E5B830;   /* Amarillo maíz claro */
+
+  /* Neutros cálidos */
+  --crema:          #F7EDDA;   /* Fondo base */
+  --crema-oscura:   #E8D4B0;   /* Bordes y separadores */
+  --crema-media:    #F0E0C0;   /* Fondos secundarios */
+  --blanco:         #FDFAF4;   /* Blanco cálido */
+  --negro:          #1C0F06;   /* Negro tierra */
+  --gris:           #614A36;   /* Texto secundario */
+  --gris-claro:     #9B7E66;   /* Texto terciario */
+
+  /* Colores semánticos (sanciones, estados) */
+  --rojo-falta:     #B92B2B;   /* Faltas, tarjeta roja */
+  --amarillo-tarj:  #D4A017;   /* Tarjeta amarilla */
+  --verde-tarj:     #2E8B57;   /* Tarjeta verde */
+  --azul-tarj:      #1F6FA8;   /* Tarjeta azul */
+  --azul-frase:     #1A5276;   /* Frases y recomendaciones */
+
+  /* ============================================================
+     TIPOGRAFÍA
+  ============================================================ */
+  --font-titulo:    'Baloo 2', 'Comic Sans MS', cursive;
+  --font-cuerpo:    'Nunito', 'Trebuchet MS', sans-serif;
+
+  /* ============================================================
+     SOMBRAS
+  ============================================================ */
+  --sombra-suave:   0 4px 16px rgba(107, 51, 32, 0.12);
+  --sombra-carta:   0 6px 24px rgba(107, 51, 32, 0.18);
+  --sombra-activo:  0 10px 32px rgba(107, 51, 32, 0.28);
+  --sombra-sticky:  0 3px 12px rgba(0, 0, 0, 0.10);
+
+  /* ============================================================
+     BORDES Y RADIOS
+  ============================================================ */
+  --radio:          16px;
+  --radio-sm:       10px;
+  --radio-pill:     50px;
+
+  /* ============================================================
+     TRANSICIONES
+  ============================================================ */
+  --transicion-rapida:  0.18s ease;
+  --transicion-media:   0.28s ease;
+  --transicion-flip:    0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ============================================================
+   RESET Y BASE GLOBAL
+============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-cuerpo);
+  background-color: var(--crema);
+  color: var(--negro);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Accesibilidad: foco visible claro para teclado */
+:focus-visible {
+  outline: 3px solid var(--maiz-claro);
+  outline-offset: 3px;
+  border-radius: var(--radio-sm);
+}

@@ -1,0 +1,347 @@
+/*
+ * cards.css
+ * ─────────────────────────────────────────────────────────────
+ * Tarjetas de vocabulario (flip cards) y tarjetas de frases.
+ * Incluye estilos del botón de audio y el estado modo estudio.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+
+/* ============================================================
+   GRILLAS DE TARJETAS
+============================================================ */
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 1rem;
+}
+
+/* Grilla más ancha para frases largas */
+.grilla-frases {
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .grilla        { grid-template-columns: repeat(2, 1fr); }
+  .grilla-frases { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .grilla { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 769px) {
+  .grilla { grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); }
+}
+
+
+/* ============================================================
+   FLIP CARD — Tarjeta volteadora (categorías 0 a 4)
+============================================================ */
+.flip-card {
+  perspective: 1200px;
+  height: 185px;
+  cursor: pointer;
+  animation: entradaArriba 0.38s ease both;
+}
+
+@media (max-width: 480px) {
+  .flip-card { height: 165px; }
+}
+
+/* Contenedor del volteo */
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transicion-flip);
+  transform-style: preserve-3d;
+}
+
+/* Cuando la tarjeta está "volteada" */
+.flip-card.volteada .flip-inner {
+  transform: rotateY(180deg);
+}
+
+/* Estilos compartidos: frente y dorso */
+.flip-frente,
+.flip-dorso {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radio);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0.9rem;
+  box-shadow: var(--sombra-carta);
+  transition: box-shadow var(--transicion-media);
+}
+
+.flip-card:hover .flip-frente,
+.flip-card:hover .flip-dorso {
+  box-shadow: var(--sombra-activo);
+}
+
+/* FRENTE — blanco cálido con borde crema */
+.flip-frente {
+  background: var(--blanco);
+  border: 2px solid var(--crema-oscura);
+}
+
+/* DORSO — rotado 180° (siempre oculto hasta voltear) */
+.flip-dorso {
+  transform: rotateY(180deg);
+  color: var(--crema);
+}
+
+/* ── Colores de dorso por categoría ── */
+.cat-0 .flip-dorso {
+  background: linear-gradient(140deg, var(--arcilla), var(--terracota));
+  border: 2px solid var(--arcilla);
+}
+.cat-1 .flip-dorso {
+  background: linear-gradient(140deg, var(--bosque), var(--bosque-claro));
+  border: 2px solid var(--bosque);
+}
+.cat-2 .flip-dorso {
+  background: linear-gradient(140deg, #9A700A, var(--maiz));
+  border: 2px solid var(--maiz);
+  color: var(--negro);
+}
+.cat-3 .flip-dorso {
+  background: linear-gradient(140deg, #7A1A1A, var(--rojo-falta));
+  border: 2px solid var(--rojo-falta);
+}
+.cat-4 .flip-dorso {
+  background: linear-gradient(140deg, var(--arcilla), #4A3020);
+  border: 2px solid var(--arcilla);
+}
+.cat-5 .flip-dorso {
+  background: linear-gradient(140deg, #0F3A5C, var(--azul-frase));
+  border: 2px solid var(--azul-frase);
+}
+
+/* ── Bordes de color en tarjetas de sanciones ── */
+.cat-4 .flip-frente[data-tipo="amarilla"] { border-color: var(--amarillo-tarj); border-width: 3px; }
+.cat-4 .flip-frente[data-tipo="roja"]     { border-color: var(--rojo-falta);    border-width: 3px; }
+.cat-4 .flip-frente[data-tipo="verde"]    { border-color: var(--verde-tarj);    border-width: 3px; }
+.cat-4 .flip-frente[data-tipo="azul"]     { border-color: var(--azul-tarj);     border-width: 3px; }
+
+
+/* ============================================================
+   CONTENIDO DE LAS TARJETAS
+============================================================ */
+
+/* Icono grande (emoji) */
+.icono-carta {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  transition: transform var(--transicion-media);
+}
+
+.flip-card:hover .icono-carta {
+  transform: scale(1.08);
+}
+
+@media (max-width: 480px) {
+  .icono-carta { font-size: 2rem; }
+}
+
+/* Palabra en kwe'sx we'wnxi (frente) */
+.palabra-nasa {
+  font-family: var(--font-titulo);
+  font-size: clamp(0.8rem, 2.2vw, 0.97rem);
+  font-weight: 700;
+  color: var(--arcilla);
+  line-height: 1.3;
+  word-break: break-word;
+  hyphens: auto;
+  transition: opacity var(--transicion-media);
+}
+
+/* En modo estudio, ocultar la palabra en el FRENTE */
+body.modo-estudio .flip-frente .palabra-nasa {
+  opacity: 0;
+}
+
+/* Hint "toca para ver" */
+.pista-toca {
+  font-size: 0.62rem;
+  color: var(--gris-claro);
+  margin-top: auto;
+  padding-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* Traducción al español (dorso) */
+.traduccion {
+  font-family: var(--font-titulo);
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+
+/* Palabra nasa en el dorso (más pequeña, de referencia) */
+.palabra-nasa-small {
+  font-size: 0.72rem;
+  opacity: 0.82;
+  font-style: italic;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+
+/* ============================================================
+   BOTÓN DE AUDIO
+   Aparece en el dorso de las flip cards y en las tarjetas de frases.
+============================================================ */
+.btn-audio {
+  margin-top: 0.55rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radio-pill);
+  padding: 0.22rem 0.7rem;
+  font-size: 0.65rem;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-cuerpo);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background var(--transicion-rapida),
+    transform var(--transicion-rapida),
+    opacity var(--transicion-rapida);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* Estado: con audio disponible */
+.btn-audio.disponible {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.btn-audio.disponible:hover {
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(1.04);
+}
+
+/* Estado: reproduciendo */
+.btn-audio.reproduciendo {
+  background: rgba(255, 255, 255, 0.5);
+  animation: latido 0.8s infinite;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+/* Estado: próximamente (sin audio aún) */
+.btn-audio.proximo {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Ícono dentro del botón de audio */
+.audio-icono {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* Texto del botón */
+.audio-texto {
+  font-size: 0.64rem;
+}
+
+
+/* ============================================================
+   TARJETA DE FRASE (categoría 5 — sin volteo)
+============================================================ */
+.frase-card {
+  background: var(--blanco);
+  border: 2px solid var(--crema-oscura);
+  border-left: 5px solid var(--azul-frase);
+  border-radius: var(--radio);
+  padding: 1.25rem 1.1rem;
+  box-shadow: var(--sombra-suave);
+  cursor: default;
+  transition:
+    transform var(--transicion-media),
+    box-shadow var(--transicion-media);
+  animation: entradaArriba 0.38s ease both;
+}
+
+.frase-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-activo);
+}
+
+/* Texto principal de la frase en kwe'sx we'wnxi */
+.frase-nasa {
+  font-family: var(--font-titulo);
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+  font-weight: 700;
+  color: var(--arcilla);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+}
+
+.frase-icono {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.05rem;
+}
+
+/* Traducción al español de la frase */
+.frase-traduccion {
+  font-size: 0.88rem;
+  color: var(--gris);
+  padding-left: 1.85rem;
+  line-height: 1.5;
+  transition: opacity var(--transicion-media);
+}
+
+/* En modo estudio, ocultar la traducción de las frases */
+body.modo-estudio .frase-traduccion {
+  opacity: 0;
+}
+
+/* Botón de audio en tarjetas de frase (sobre fondo blanco) */
+.frase-card .btn-audio {
+  background: var(--crema-media);
+  border: 1px solid var(--crema-oscura);
+  color: var(--gris);
+  margin-top: 0.75rem;
+  margin-left: 1.85rem;
+}
+
+.frase-card .btn-audio.disponible {
+  background: var(--bosque);
+  border-color: var(--bosque);
+  color: var(--crema);
+}
+
+.frase-card .btn-audio.disponible:hover {
+  background: var(--bosque-claro);
+}
+
+.frase-card .btn-audio.reproduciendo {
+  background: var(--bosque-claro);
+  color: var(--crema);
+}

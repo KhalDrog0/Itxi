@@ -1,0 +1,232 @@
+/*
+ * controls.css
+ * ─────────────────────────────────────────────────────────────
+ * Barra de controles sticky: buscador, botón modo estudio,
+ * tabs de categorías y contador de resultados.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+
+/* ============================================================
+   BARRA DE CONTROLES (sticky al hacer scroll)
+============================================================ */
+.controles {
+  background: var(--blanco);
+  padding: 0.9rem 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: var(--sombra-sticky);
+  border-bottom: 4px solid var(--terracota);
+}
+
+.controles-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+
+/* ============================================================
+   FILA SUPERIOR: buscador + botón modo estudio
+============================================================ */
+.fila-busqueda {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* Campo de búsqueda */
+.buscador {
+  flex: 1;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border: 2px solid var(--crema-oscura);
+  border-radius: var(--radio-pill);
+  font-family: var(--font-cuerpo);
+  font-size: 0.95rem;
+  background-color: var(--crema);
+  /* Ícono de lupa incrustado como SVG en data URI */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239B7E66' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.8rem center;
+  color: var(--negro);
+  outline: none;
+  transition:
+    border-color var(--transicion-rapida),
+    box-shadow var(--transicion-rapida);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Limpiar el botón nativo del input[type=search] en WebKit */
+.buscador::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.buscador:focus {
+  border-color: var(--terracota);
+  box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.15);
+}
+
+.buscador::placeholder {
+  color: var(--gris-claro);
+}
+
+/* Botón de modo estudio */
+.btn-estudio {
+  background: var(--bosque);
+  color: var(--crema);
+  border: 2px solid transparent;
+  border-radius: var(--radio-pill);
+  padding: 0.58rem 1.1rem;
+  font-family: var(--font-cuerpo);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background var(--transicion-rapida),
+    transform var(--transicion-rapida);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  line-height: 1;
+}
+
+.btn-estudio:hover {
+  background: var(--bosque-claro);
+  transform: translateY(-1px);
+}
+
+/* Estado activo del modo estudio */
+.btn-estudio.activo {
+  background: var(--maiz);
+  color: var(--negro);
+  border-color: var(--maiz);
+}
+
+.btn-estudio.activo:hover {
+  background: var(--maiz-claro);
+}
+
+
+/* ============================================================
+   BANNER DE MODO ESTUDIO
+============================================================ */
+.indicador-estudio {
+  display: none;   /* oculto por defecto */
+  background: linear-gradient(90deg, var(--maiz), var(--maiz-claro));
+  color: var(--negro);
+  text-align: center;
+  padding: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radio-sm);
+  animation: pulso 2s infinite;
+}
+
+.indicador-estudio.visible {
+  display: block;
+}
+
+@keyframes pulso {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+
+
+/* ============================================================
+   TABS DE CATEGORÍAS
+============================================================ */
+.tabs-categorias {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  /* Ocultar scrollbar pero mantener scroll táctil */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabs-categorias::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tab individual */
+.tab {
+  background: var(--crema-media);
+  color: var(--gris);
+  border: 2px solid transparent;
+  border-radius: var(--radio-pill);
+  padding: 0.42rem 0.9rem;
+  font-family: var(--font-cuerpo);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background var(--transicion-rapida),
+    border-color var(--transicion-rapida),
+    color var(--transicion-rapida);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  line-height: 1;
+}
+
+.tab:hover {
+  background: var(--crema);
+  border-color: var(--terracota);
+  color: var(--terracota);
+}
+
+/* Estado activo — color base */
+.tab.activo {
+  color: var(--crema);
+}
+
+/* Colores activos específicos por categoría */
+.tab[data-cat="-1"].activo { background: var(--gris);       border-color: var(--gris); }
+.tab[data-cat="0"].activo  { background: var(--tierra);     border-color: var(--tierra); }
+.tab[data-cat="1"].activo  { background: var(--bosque);     border-color: var(--bosque); }
+.tab[data-cat="2"].activo  { background: var(--maiz);       border-color: var(--maiz); color: var(--negro); }
+.tab[data-cat="3"].activo  { background: var(--rojo-falta); border-color: var(--rojo-falta); }
+.tab[data-cat="4"].activo  { background: var(--arcilla);    border-color: var(--arcilla); }
+.tab[data-cat="5"].activo  { background: var(--azul-frase); border-color: var(--azul-frase); }
+
+
+/* ============================================================
+   CONTADOR DE RESULTADOS
+============================================================ */
+.conteo-resultados {
+  font-size: 0.78rem;
+  color: var(--gris-claro);
+  padding: 0.1rem 0.2rem;
+}
+
+
+/* ============================================================
+   RESPONSIVE — Controles en pantallas anchas
+============================================================ */
+@media (min-width: 769px) {
+  .controles-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .fila-busqueda {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  /* Estos elementos ocupan toda la fila */
+  .indicador-estudio,
+  .conteo-resultados,
+  .tabs-categorias {
+    width: 100%;
+  }
+}

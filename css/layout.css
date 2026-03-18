@@ -1,0 +1,398 @@
+/*
+ * layout.css
+ * ─────────────────────────────────────────────────────────────
+ * Estructura general de la página:
+ * Header · Patrones geométricos · Intro · Contenido principal · Footer
+ * ─────────────────────────────────────────────────────────────
+ */
+
+
+/* ============================================================
+   PATRONES GEOMÉTRICOS TIPO TEJIDO NASA
+   Usados como separadores entre secciones.
+   Inspirados en los rombos y franjas del tejido tradicional.
+============================================================ */
+
+/* Patrón de rombos (diamante) en tonos tierra y maíz */
+.patron-nasa {
+  --d: 18px;
+  height: 24px;
+  background-color: var(--maiz);
+  background-image:
+    linear-gradient(135deg, var(--arcilla) 25%, transparent 25%),
+    linear-gradient(225deg, var(--arcilla) 25%, transparent 25%),
+    linear-gradient(315deg, var(--arcilla) 25%, transparent 25%),
+    linear-gradient(45deg,  var(--arcilla) 25%, transparent 25%);
+  background-size: var(--d) var(--d);
+  background-position:
+    calc(var(--d) / 2) 0,
+    calc(var(--d) / 2) 0,
+    0 0,
+    0 0;
+}
+
+/* Franja tricolor tipo wristband tradicional nasa */
+.patron-nasa-2 {
+  height: 20px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bosque)     0px,  var(--bosque)     16px,
+    var(--maiz-claro) 16px, var(--maiz-claro) 32px,
+    var(--terracota)  32px, var(--terracota)  48px,
+    var(--arcilla)    48px, var(--arcilla)    64px
+  );
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+header {
+  background: linear-gradient(160deg, var(--arcilla) 0%, var(--tierra) 60%, var(--terracota) 100%);
+  color: var(--crema);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Textura de tejido sutil en el fondo */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+       45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px,
+       transparent 1px, transparent 10px
+    ),
+    repeating-linear-gradient(
+      -45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px,
+       transparent 1px, transparent 10px
+    );
+  pointer-events: none;
+}
+
+/* Balón decorativo de fondo */
+header::after {
+  content: '⚽';
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  font-size: 140px;
+  opacity: 0.06;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.header-contenido {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Fila de emblemas circulares */
+.header-emblemas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.emblema {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+}
+
+.emblema-linea {
+  height: 2px;
+  width: 32px;
+  background: var(--maiz-claro);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Títulos del header */
+.titulo-principal {
+  font-family: var(--font-titulo);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--crema);
+  text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.35);
+  margin-bottom: 0.75rem;
+}
+
+.titulo-nasa {
+  font-size: clamp(1.5rem, 5.5vw, 2.6rem);
+  color: var(--maiz-claro);
+  display: block;
+  letter-spacing: 0.01em;
+}
+
+.titulo-esp {
+  font-size: clamp(1.05rem, 3.5vw, 1.75rem);
+  display: block;
+  font-weight: 700;
+  opacity: 0.92;
+}
+
+.header-subtitulo {
+  font-size: clamp(0.78rem, 2.5vw, 0.97rem);
+  color: var(--crema-oscura);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+/* Etiqueta pill del territorio */
+.header-territorio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radio-pill);
+  padding: 0.3rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--maiz-claro);
+  margin-top: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+
+/* ============================================================
+   SECCIÓN INTRODUCTORIA
+============================================================ */
+.intro {
+  background: var(--bosque);
+  color: var(--crema);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+}
+
+.intro-texto {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  line-height: 1.75;
+}
+
+.intro-texto strong {
+  color: var(--maiz-claro);
+}
+
+/* Pasos de uso en pills */
+.intro-pasos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.paso {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radio-pill);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.83rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: background var(--transicion-rapida);
+}
+
+.paso:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL
+============================================================ */
+.contenido-principal {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 2.5rem;
+}
+
+
+/* ============================================================
+   SECCIONES DE CATEGORÍA
+============================================================ */
+.seccion-categoria {
+  margin-bottom: 2.75rem;
+}
+
+.encabezado-categoria {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 3px solid var(--crema-oscura);
+  position: relative;
+}
+
+/* Barra de acento de color a la izquierda */
+.encabezado-categoria::before {
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  top: 0;
+  bottom: 0.8rem;
+  width: 5px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Colores de acento por categoría */
+.cat-color-0::before { background: var(--tierra); }
+.cat-color-1::before { background: var(--bosque); }
+.cat-color-2::before { background: var(--maiz); }
+.cat-color-3::before { background: var(--rojo-falta); }
+.cat-color-4::before { background: var(--arcilla); }
+.cat-color-5::before { background: var(--azul-frase); }
+
+.icono-categoria {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.nombre-categoria {
+  font-family: var(--font-titulo);
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--arcilla);
+}
+
+.badge-conteo {
+  margin-left: auto;
+  background: var(--crema-oscura);
+  color: var(--gris);
+  border-radius: var(--radio-pill);
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   SIN RESULTADOS
+============================================================ */
+.sin-resultados {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: var(--gris-claro);
+}
+
+/* Se controla con el atributo HTML `hidden` desde JS */
+.sin-resultados[hidden] {
+  display: none;
+}
+
+.sin-resultados-icono {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.sin-resultados p {
+  font-size: 1.05rem;
+  color: var(--gris);
+}
+
+.sin-resultados-ayuda {
+  font-size: 0.9rem !important;
+  margin-top: 0.5rem;
+  color: var(--gris-claro) !important;
+}
+
+
+/* ============================================================
+   ANIMACIÓN DE ENTRADA DE TARJETAS
+============================================================ */
+@keyframes entradaArriba {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  background: var(--negro);
+  color: var(--crema-oscura);
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-family: var(--font-titulo);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--maiz-claro);
+  margin-bottom: 1rem;
+}
+
+.footer-info {
+  font-size: 0.83rem;
+  line-height: 2;
+  opacity: 0.75;
+}
+
+.footer-declaracion {
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--maiz-claro);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.footer-año {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  opacity: 0.5;
+}
+
+
+/* ============================================================
+   RESPONSIVE — Ajustes de layout
+============================================================ */
+@media (max-width: 480px) {
+  .header-contenido {
+    padding: 1.75rem 1rem 1.5rem;
+  }
+  .contenido-principal {
+    padding: 1.25rem 0.9rem 2rem;
+  }
+  .encabezado-categoria::before {
+    left: -0.9rem;
+  }
+}
