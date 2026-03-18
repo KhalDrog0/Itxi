@@ -183,5 +183,5 @@ espera encontrar. Cuando un archivo está presente, el botón
 
 ---
 
-*Territorio Sa'th Tama Taba · CEFIC La Estrella · Caldono, Cauca*
-*Kwe'sx we'wnxi — Lengua del Pueblo Nasa*
+*Territorio Ikh Tukh Kiwe · CEFIC La Estrella · Caldono, Cauca*
+*Kwe'sx we'wnxi — Lengua del Pueblo Nasa ▪︎ Nasa Yuwe*
