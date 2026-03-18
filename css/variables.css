@@ -13,12 +13,12 @@
      PALETA DE COLORES — Inspirada en la tierra y el territorio
      del Pueblo Nasa, Caldono, Cauca
   ============================================================ */
-
+  
   /* Tonos tierra */
-  --arcilla:        #427A4D;   /* Café arcilla oscuro — color principal */
-  --terracota:      #62D1C2;   /* Terracota — acento primario */
-  --tierra:         #DC9B7F;   /* Tierra media */
-  --tierra-clara:   #6A95D2;   /* Tierra suave */
+  --arcilla:        #6B3320;   /* Café arcilla oscuro — color principal */
+  --terracota:      #8b6153;   /* Terracota — acento primario */
+  --tierra:         #6d4a3d;   /* Tierra media */
+  --tierra-clara:   #7f5e52;   /* Tierra suave */
 
   /* Verdes del bosque */
   --bosque:         #2D5A1B;   /* Verde bosque — categoría Roles */
