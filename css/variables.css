@@ -46,6 +46,37 @@
   --azul-frase:     #1A5276;   /* Frases y recomendaciones */
 
   /* ============================================================
+     FONDOS INDEPENDIENTES
+     Estas variables controlan fondos específicos de sección
+     sin afectar los colores de texto, bordes ni tarjetas.
+     Edítalas aquí para cambiar solo ese elemento.
+  ============================================================ */
+
+  /* Fondo del cuerpo (body) — área de tarjetas y contenido */
+  --fondo-body:           #F7EDDA;
+
+  /* Header — gradiente de izquierda a derecha */
+  --fondo-header-izq:     #6B3320;
+  --fondo-header-cen:     #9B4B2A;
+  --fondo-header-der:     #B85C38;
+
+  /* Banda tricolor (.patron-nasa-2) — 4 segmentos de color */
+  --banda-color-1:        #2D5A1B;   /* Segmento 1 (izquierda) */
+  --banda-color-2:        #E5B830;   /* Segmento 2 */
+  --banda-color-3:        #B85C38;   /* Segmento 3 */
+  --banda-color-4:        #6B3320;   /* Segmento 4 (derecha) */
+
+  /* Fondo de la sección introductoria */
+  --fondo-intro:          #2D5A1B;
+
+  /* Fondo de la barra de controles (sticky) — usa rgba para transparencia */
+  /* Formato: rgba(R, G, B, opacidad) — 0.08 = 92% transparente           */
+  --fondo-controles:      rgba(253, 250, 244, 0.08);
+
+  /* Fondo del footer */
+  --fondo-footer:         #1C0F06;
+
+  /* ============================================================
      TIPOGRAFÍA
   ============================================================ */
   --font-titulo:    'Baloo 2', 'Comic Sans MS', cursive;
