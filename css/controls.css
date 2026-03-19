@@ -9,9 +9,15 @@
 
 /* ============================================================
    BARRA DE CONTROLES (sticky al hacer scroll)
+   Fondo controlado por --fondo-controles en variables.css.
+   Por defecto: rgba con ~92% de transparencia + desenfoque de fondo.
+   El backdrop-filter crea el efecto de "vidrio esmerilado" sobre
+   las tarjetas al hacer scroll, manteniendo la barra legible.
 ============================================================ */
 .controles {
-  background: var(--blanco);
+  background: var(--fondo-controles);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
   padding: 0.9rem 1.25rem;
   position: sticky;
   top: 0;
