@@ -32,14 +32,15 @@
 }
 
 /* Franja tricolor tipo wristband tradicional nasa */
+/* Colores controlados por --banda-color-1/2/3/4 en variables.css */
 .patron-nasa-2 {
   height: 20px;
   background: repeating-linear-gradient(
     90deg,
-    var(--bosque)     0px,  var(--bosque)     16px,
-    var(--maiz-claro) 16px, var(--maiz-claro) 32px,
-    var(--terracota)  32px, var(--terracota)  48px,
-    var(--arcilla)    48px, var(--arcilla)    64px
+    var(--banda-color-1) 0px,  var(--banda-color-1) 16px,
+    var(--banda-color-2) 16px, var(--banda-color-2) 32px,
+    var(--banda-color-3) 32px, var(--banda-color-3) 48px,
+    var(--banda-color-4) 48px, var(--banda-color-4) 64px
   );
 }
 
@@ -47,27 +48,24 @@
 /* ============================================================
    HEADER
 ============================================================ */
+/* Fondo controlado por --fondo-header-izq/cen/der en variables.css */
 header {
-  background: linear-gradient(160deg, var(--arcilla) 0%, var(--tierra) 60%, var(--terracota) 100%);
+  background: linear-gradient(
+    160deg,
+    var(--fondo-header-izq) 0%,
+    var(--fondo-header-cen) 60%,
+    var(--fondo-header-der) 100%
+  );
   color: var(--crema);
   position: relative;
   overflow: hidden;
 }
 
-/* Textura de tejido sutil en el fondo */
+/* Textura de tejido — eliminada, dejar vacío o activar con background-image */
 header::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    repeating-linear-gradient(
-       45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px,
-       transparent 1px, transparent 10px
-    ),
-    repeating-linear-gradient(
-      -45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px,
-       transparent 1px, transparent 10px
-    );
   pointer-events: none;
 }
 
@@ -175,8 +173,9 @@ header::after {
 /* ============================================================
    SECCIÓN INTRODUCTORIA
 ============================================================ */
+/* Fondo controlado por --fondo-intro en variables.css */
 .intro {
-  background: var(--bosque);
+  background: var(--fondo-intro);
   color: var(--crema);
   padding: 1.75rem 1.5rem;
   text-align: center;
@@ -340,8 +339,9 @@ header::after {
 /* ============================================================
    FOOTER
 ============================================================ */
+/* Fondo controlado por --fondo-footer en variables.css */
 footer {
-  background: var(--negro);
+  background: var(--fondo-footer);
   color: var(--crema-oscura);
   padding: 2.25rem 1.5rem;
   text-align: center;
