@@ -15,26 +15,17 @@
 
 /* Patrón de rombos (diamante) en tonos tierra y maíz */
 .patron-nasa {
-  --d: 18px;
-  height: 24px;
-  background-color: var(--maiz);
-  background-image:
-    linear-gradient(135deg, var(--arcilla) 25%, transparent 25%),
-    linear-gradient(225deg, var(--arcilla) 25%, transparent 25%),
-    linear-gradient(315deg, var(--arcilla) 25%, transparent 25%),
-    linear-gradient(45deg,  var(--arcilla) 25%, transparent 25%);
-  background-size: var(--d) var(--d);
-  background-position:
-    calc(var(--d) / 2) 0,
-    calc(var(--d) / 2) 0,
-    0 0,
-    0 0;
+      --d: 103px;
+   border-top: dotted;
+   background-color: #0f3a5c;
+   background-size: var(--d) var(--d);
+   background-position: calc(var(--d) / 2) 0, calc(var(--d) / 2) 0, 0 0, 0 0;
 }
 
 /* Franja tricolor tipo wristband tradicional nasa */
 /* Colores controlados por --banda-color-1/2/3/4 en variables.css */
 .patron-nasa-2 {
-  height: 20px;
+  height: 8px;
   background: repeating-linear-gradient(
     90deg,
     var(--banda-color-1) 0px,  var(--banda-color-1) 16px,
@@ -133,7 +124,7 @@ header::after {
 
 .titulo-nasa {
   font-size: clamp(1.5rem, 5.5vw, 2.6rem);
-  color: var(--maiz-claro);
+  color: var(--azul-frase);
   display: block;
   letter-spacing: 0.01em;
 }
@@ -164,7 +155,7 @@ header::after {
   padding: 0.3rem 0.9rem;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--maiz-claro);
+  color: var(--azul-frase);
   margin-top: 0.75rem;
   letter-spacing: 0.05em;
 }
