@@ -56,9 +56,9 @@
   --fondo-body:           #F7EDDA;
 
   /* Header — gradiente de izquierda a derecha */
-  --fondo-header-izq:     #6B3320;
-  --fondo-header-cen:     #9B4B2A;
-  --fondo-header-der:     #B85C38;
+  --fondo-header-izq:     #8FC4B9;
+  --fondo-header-cen:     #8F9AC4;
+  --fondo-header-der:     #8FB4C4;
 
   /* Banda tricolor (.patron-nasa-2) — 4 segmentos de color */
   --banda-color-1:        #2D5A1B;   /* Segmento 1 (izquierda) */
@@ -67,7 +67,7 @@
   --banda-color-4:        #6B3320;   /* Segmento 4 (derecha) */
 
   /* Fondo de la sección introductoria */
-  --fondo-intro:          #2D5A1B;
+  --fondo-intro:          #53ADC8;
 
   /* Fondo de la barra de controles (sticky) — usa rgba para transparencia */
   /* Formato: rgba(R, G, B, opacidad) — 0.08 = 92% transparente           */
