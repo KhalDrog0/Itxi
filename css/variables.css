@@ -53,7 +53,7 @@
   ============================================================ */
 
   /* Fondo del cuerpo (body) — área de tarjetas y contenido */
-  --fondo-body:           #F7EDDA;
+  --fondo-body:           #FFFFFF;
 
   /* Header — gradiente de izquierda a derecha */
   --fondo-header-izq:     #8FC4B9;
