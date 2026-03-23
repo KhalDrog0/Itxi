@@ -53,11 +53,11 @@
   ============================================================ */
 
   /* Fondo del cuerpo (body) — área de tarjetas y contenido */
-  --fondo-body:           #FFFFFF;
+  --fondo-body:           #F7EDDA;
 
   /* Header — gradiente de izquierda a derecha */
   --fondo-header-izq:     #8FC4B9;
-  --fondo-header-cen:     #8F9AC4;
+  --fondo-header-cen:     #FFFFFF;
   --fondo-header-der:     #8FB4C4;
 
   /* Banda tricolor (.patron-nasa-2) — 4 segmentos de color */
