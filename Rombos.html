@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Educativo SEIP - Estructura de Saberes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-mat: #D4A574;
+            --color-com: #7FB3D5;
+            --color-bio: #82E0AA;
+            --color-soc: #F8B88B;
+            --color-dep: #DDA0DD;
+            --bg-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, #D4A574, #7FB3D5, #82E0AA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .main-structure {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            position: relative;
+            padding: 40px;
+        }
+
+        .area-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .area-container:nth-child(1) { animation-delay: 0.2s; }
+        .area-container:nth-child(2) { animation-delay: 0.4s; }
+        .area-container:nth-child(3) { animation-delay: 0.6s; }
+        .area-container:nth-child(4) { animation-delay: 0.8s; }
+
+        .main-diamond {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+            border: 2px solid;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .main-diamond:hover {
+            transform: rotate(45deg) scale(1.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .area-container:nth-child(1) .main-diamond {
+            border-color: var(--color-mat);
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.3);
+        }
+
+        .area-container:nth-child(2) .main-diamond {
+            border-color: var(--color-com);
+            box-shadow: 0 0 30px rgba(127, 179, 213, 0.3);
+        }
+
+        .area-container:nth-child(3) .main-diamond {
+            border-color: var(--color-bio);
+            box-shadow: 0 0 30px rgba(130, 224, 170, 0.3);
+        }
+
+        .area-container:nth-child(4) .main-diamond {
+            border-color: var(--color-soc);
+            box-shadow: 0 0 30px rgba(248, 184, 139, 0.3);
+        }
+
+        .diamond-content {
+            transform: rotate(-45deg);
+            text-align: center;
+            padding: 20px;
+            width: 140%;
+        }
+
+        .diamond-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .area-container:nth-child(1) .diamond-number { color: var(--color-mat); }
+        .area-container:nth-child(2) .diamond-number { color: var(--color-com); }
+        .area-container:nth-child(3) .diamond-number { color: var(--color-bio); }
+        .area-container:nth-child(4) .diamond-number { color: var(--color-soc); }
+
+        .diamond-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #fff;
+        }
+
+        .sub-areas {
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            max-width: 300px;
+        }
+
+        .sub-diamond {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .sub-diamond:nth-child(1) { animation-delay: 0s; }
+        .sub-diamond:nth-child(2) { animation-delay: 0.5s; }
+        .sub-diamond:nth-child(3) { animation-delay: 1s; }
+        .sub-diamond:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(-5px); }
+        }
+
+        .area-container:nth-child(1) .sub-diamond {
+            border-color: var(--color-mat);
+        }
+        .area-container:nth-child(1) .sub-diamond:hover {
+            background: var(--color-mat);
+            box-shadow: 0 0 20px var(--color-mat);
+        }
+
+        .area-container:nth-child(2) .sub-diamond {
+            border-color: var(--color-com);
+        }
+        .area-container:nth-child(2) .sub-diamond:hover {
+            background: var(--color-com);
+            box-shadow: 0 0 20px var(--color-com);
+        }
+
+        .area-container:nth-child(3) .sub-diamond {
+            border-color: var(--color-bio);
+        }
+        .area-container:nth-child(3) .sub-diamond:hover {
+            background: var(--color-bio);
+            box-shadow: 0 0 20px var(--color-bio);
+        }
+
+        .area-container:nth-child(4) .sub-diamond {
+            border-color: var(--color-soc);
+        }
+        .area-container:nth-child(4) .sub-diamond:hover {
+            background: var(--color-soc);
+            box-shadow: 0 0 20px var(--color-soc);
+        }
+
+        .sub-content {
+            transform: rotate(-45deg);
+            font-size: 0.75rem;
+            text-align: center;
+            width: 120%;
+            line-height: 1.2;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .sub-diamond:hover .sub-content {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .connector {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .sports-section {
+            margin-top: 80px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+
+        .sports-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px 50px;
+            background: linear-gradient(135deg, rgba(221, 160, 221, 0.1), rgba(221, 160, 221, 0.05));
+            border: 2px solid var(--color-dep);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sports-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(221, 160, 221, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .sports-icon {
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .sports-text {
+            text-align: left;
+            z-index: 1;
+        }
+
+        .sports-title {
+            font-size: 1.5rem;
+            color: var(--color-dep);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .sports-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            max-width: 400px;
+            line-height: 1.4;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: drift 20s infinite linear;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(100vh) translateX(0); }
+            to { transform: translateY(-100vh) translateX(100px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            max-width: 300px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            z-index: 100;
+        }
+
+        .info-panel strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 968px) {
+            .main-structure {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .main-diamond {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .diamond-content {
+                width: 130%;
+            }
+        }
+
+        .glow-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .main-diamond:hover .glow-effect {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Modelo Educativo SEIP</h1>
+            <div class="subtitle">Proyecto Educativo Comunitario (PEC)</div>
+        </header>
+
+        <div class="main-structure">
+            <!-- Área 1: Matemáticas y Producción -->
+            <div class="area-container">
+                <div class="main-diamond" onclick="highlightArea(this)">
+                    <div class="glow-effect"></div>
+                    <div class="diamond-content">
+                        <div class="diamond-number">01</div>
+                        <div class="diamond-title">Matemáticas y<br>Producción</div>
+                    </div>
+                </div>
+                <div class="sub-areas">
+                    <div class="connector"></div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Matemática<br>Financiera</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Producción<br>Agrícola</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área 2: Comunicación y Lenguaje -->
+            <div class="area-container">
+                <div class="main-diamond" onclick="highlightArea(this)">
+                    <div class="glow-effect"></div>
+                    <div class="diamond-content">
+                        <div class="diamond-number">02</div>
+                        <div class="diamond-title">Comunicación y<br>Lenguaje</div>
+                    </div>
+                </div>
+                <div class="sub-areas">
+                    <div class="connector"></div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Tecnología</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Inglés</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Nadayuwe</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área 3: Comunidad y Naturaleza -->
+            <div class="area-container">
+                <div class="main-diamond" onclick="highlightArea(this)">
+                    <div class="glow-effect"></div>
+                    <div class="diamond-content">
+                        <div class="diamond-number">03</div>
+                        <div class="diamond-title">Comunidad y<br>Naturaleza</div>
+                    </div>
+                </div>
+                <div class="sub-areas">
+                    <div class="connector"></div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Física</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Química</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Lab.<br>Física</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Lab.<br>Química</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área 4: Territorio y Sociedad -->
+            <div class="area-container">
+                <div class="main-diamond" onclick="highlightArea(this)">
+                    <div class="glow-effect"></div>
+                    <div class="diamond-content">
+                        <div class="diamond-number">04</div>
+                        <div class="diamond-title">Territorio y<br>Sociedad</div>
+                    </div>
+                </div>
+                <div class="sub-areas">
+                    <div class="connector"></div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Historia<br>Propia</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Filosofía -<br>Política</div>
+                    </div>
+                    <div class="sub-diamond">
+                        <div class="sub-content">Artística</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Deportiva -->
+        <div class="sports-section">
+            <div class="sports-container">
+                <div class="sports-icon">⚡</div>
+                <div class="sports-text">
+                    <div class="sports-title">05. Espacios Deportivos</div>
+                    <div class="sports-desc">Educación Física en espacios abiertos. Práctica deportiva y teoría del movimiento en conexión con el territorio.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-panel">
+        <strong>Modelo SEIP</strong>
+        Sistema de Educación Indígena Propia basado en el territorio, la comunidad y los saberes ancestrales.
+    </div>
+
+    <script>
+        // Crear partículas de fondo
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#D4A574', '#7FB3D5', '#82E0AA', '#F8B88B', '#DDA0DD'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.opacity = Math.random() * 0.3;
+                container.appendChild(particle);
+            }
+        }
+
+        // Efecto de resaltado al hacer clic
+        function highlightArea(element) {
+            // Remover clase active de todos
+            document.querySelectorAll('.main-diamond').forEach(d => {
+                d.style.transform = 'rotate(45deg) scale(1)';
+                d.style.filter = 'brightness(0.5)';
+            });
+            
+            // Activar el seleccionado
+            element.style.transform = 'rotate(45deg) scale(1.2)';
+            element.style.filter = 'brightness(1.2)';
+            
+            // Restaurar después de 2 segundos
+            setTimeout(() => {
+                document.querySelectorAll('.main-diamond').forEach(d => {
+                    d.style.transform = '';
+                    d.style.filter = '';
+                });
+            }, 2000);
+        }
+
+        // Efecto parallax suave
+        document.addEventListener('mousemove', (e) => {
+            const diamonds = document.querySelectorAll('.main-diamond');
+            const x = (window.innerWidth - e.pageX) / 50;
+            const y = (window.innerHeight - e.pageY) / 50;
+            
+            diamonds.forEach((diamond, index) => {
+                const speed = (index + 1) * 0.5;
+                diamond.style.transform = `rotate(45deg) translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
+        // Inicializar
+        createParticles();
+
+        // Animación de entrada escalonada para sub-áreas
+        window.addEventListener('load', () => {
+            const subAreas = document.querySelectorAll('.sub-diamond');
+            subAreas.forEach((sub, index) => {
+                sub.style.opacity = '0';
+                sub.style.transform = 'rotate(45deg) scale(0)';
+                setTimeout(() => {
+                    sub.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    sub.style.opacity = '1';
+                    sub.style.transform = 'rotate(45deg) scale(1)';
+                }, 1000 + (index * 100));
+            });
+        });
+    </script>
+</body>
+</html>
