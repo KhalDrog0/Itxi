@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,6 +28,7 @@
             background: linear-gradient(135deg, var(--fondo) 0%, #E8F5E9 100%);
             color: var(--texto);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         /* Navegación estilo cinta de PowerPoint */
@@ -46,6 +46,11 @@
             display: flex;
             background: var(--cafe-medio);
             overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .ribbon-tabs::-webkit-scrollbar {
+            display: none;
         }
 
         .ribbon-tab {
@@ -57,6 +62,7 @@
             font-weight: 600;
             transition: all 0.3s;
             white-space: nowrap;
+            font-size: 14px;
         }
 
         .ribbon-tab:hover, .ribbon-tab.active {
@@ -67,33 +73,35 @@
         .ribbon-content {
             padding: 15px;
             background: var(--cafe-oscuro);
+            min-height: 80px;
         }
 
         .ribbon-section {
             display: none;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .ribbon-section.active {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            align-items: center;
         }
 
         .tool-btn {
             background: white;
             color: var(--cafe-oscuro);
             border: 2px solid var(--cafe-claro);
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             transition: all 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
-            min-width: 80px;
+            gap: 4px;
+            min-width: 70px;
+            text-align: center;
         }
 
         .tool-btn:hover {
@@ -104,7 +112,7 @@
         }
 
         .tool-icon {
-            font-size: 24px;
+            font-size: 20px;
         }
 
         /* Contenido principal */
@@ -112,6 +120,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-bottom: 100px;
         }
 
         .slide {
@@ -211,6 +220,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 0.95em;
         }
 
         th {
@@ -239,6 +249,8 @@
             font-family: 'Courier New', monospace;
             white-space: pre;
             overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.4;
         }
 
         .interactive-element {
@@ -299,6 +311,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
 
         .btn:hover {
@@ -341,6 +354,7 @@
             font-size: 1.2em;
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 999;
         }
 
         .checklist {
@@ -351,6 +365,7 @@
             padding: 10px 0 10px 35px;
             position: relative;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
         .checklist li::before {
@@ -371,13 +386,6 @@
             opacity: 0.7;
         }
 
-        @media (max-width: 768px) {
-            .slide { padding: 20px; }
-            h1 { font-size: 1.8em; }
-            .timer { position: relative; top: auto; right: auto; margin: 10px 0; }
-            .nav-buttons { position: relative; bottom: auto; right: auto; justify-content: center; margin: 20px 0; }
-        }
-
         .highlight {
             background: linear-gradient(120deg, #FFE082 0%, #FFE082 100%);
             background-repeat: no-repeat;
@@ -394,19 +402,21 @@
         }
 
         .color-box {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 0.8em;
+            font-size: 0.75em;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
             cursor: pointer;
             transition: transform 0.2s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: center;
+            padding: 5px;
         }
 
         .color-box:hover {
@@ -430,6 +440,93 @@
             font-size: 0.8em;
             white-space: nowrap;
             z-index: 100;
+            margin-bottom: 5px;
+        }
+
+        .slide-indicator {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--cafe-medio);
+            font-weight: 600;
+        }
+
+        .session-badge {
+            display: inline-block;
+            background: var(--verde-bosque);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .time-warning {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { background: var(--cafe-oscuro); }
+            50% { background: var(--tierra); }
+        }
+
+        @media (max-width: 768px) {
+            .slide { padding: 20px; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+            .timer { 
+                position: relative; 
+                top: auto; 
+                right: auto; 
+                margin: 10px 0; 
+                text-align: center;
+            }
+            .nav-buttons { 
+                position: fixed; 
+                bottom: 10px; 
+                right: 10px; 
+                left: 10px;
+                justify-content: center; 
+            }
+            .diagram { font-size: 0.7em; padding: 15px; }
+            .ribbon-tab { padding: 10px 15px; font-size: 12px; }
+        }
+
+        .print-only { display: none; }
+
+        @media print {
+            .slide { display: block !important; page-break-after: always; }
+            .ribbon, .nav-buttons, .timer, .progress-bar { display: none !important; }
+            .print-only { display: block; }
+            body { background: white; }
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border: 3px dashed var(--verde-bosque);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .download-btn {
+            background: var(--verde-bosque);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            background: var(--cafe-oscuro);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -455,6 +552,7 @@
                 <button class="tool-btn" onclick="startClass()"><span class="tool-icon">▶️</span>Iniciar Clase</button>
                 <button class="tool-btn" onclick="showSlide(0)"><span class="tool-icon">📖</span>Presentación</button>
                 <button class="tool-btn" onclick="toggleTimer()"><span class="tool-icon">⏱️</span>Temporizador</button>
+                <button class="tool-btn" onclick="showSlide(10)"><span class="tool-icon">💾</span>Descargar</button>
             </div>
             <div id="tools-sesion1" class="ribbon-section">
                 <button class="tool-btn" onclick="showSlide(1)"><span class="tool-icon">🌿</span>Contexto Nasa</button>
@@ -466,10 +564,12 @@
                 <button class="tool-btn" onclick="showSlide(5)"><span class="tool-icon">📐</span>Principios</button>
                 <button class="tool-btn" onclick="showSlide(6)"><span class="tool-icon">☕</span>Práctica Café</button>
                 <button class="tool-btn" onclick="showSlide(7)"><span class="tool-icon">💾</span>Guardar</button>
+                <button class="tool-btn" onclick="showSlide(8)"><span class="tool-icon">🎤</span>Presentar</button>
             </div>
             <div id="tools-recursos" class="ribbon-section">
-                <button class="tool-btn" onclick="showSlide(8)"><span class="tool-icon">📋</span>Anexos</button>
+                <button class="tool-btn" onclick="showSlide(9)"><span class="tool-icon">📋</span>Anexos</button>
                 <button class="tool-btn" onclick="window.print()"><span class="tool-icon">🖨️</span>Imprimir</button>
+                <button class="tool-btn" onclick="toggleChecklist()"><span class="tool-icon">✓</span>Checklist</button>
             </div>
             <div id="tools-evaluacion" class="ribbon-section">
                 <button class="tool-btn" onclick="showSlide(9)"><span class="tool-icon">📝</span>Rúbrica</button>
@@ -481,70 +581,90 @@
     <div class="main-container">
         <!-- Slide 0: Portada -->
         <div class="slide active" id="slide-0">
+            <span class="session-badge">Grado 10° | Periodo 2 | 4 Horas</span>
             <h1>🌱 Tecnología e Informática</h1>
-            <h2>Grado 10° | Época de Gusanos (Seip)</h2>
+            <h2>Época de Gusanos (Seip) - Transformación Digital</h2>
             
             <div class="nasa-context">
-                El tiempo de la transformación interior, del trabajo profundo en la tierra, de preparar el terreno para lo que vendrá.
+                El tiempo de la transformación interior, del trabajo profundo en la tierra, de preparar el terreno para lo que vendrá. Es el momento de construir desde adentro, como el gusano que teje su capullo antes de convertirse en mariposa.
             </div>
 
             <div style="text-align: center; margin: 40px 0;">
-                <div style="font-size: 4em; margin: 20px;">🐛 ➡️ 🦋</div>
+                <div style="font-size: 5em; margin: 20px; animation: float 3s ease-in-out infinite;">🐛 ➡️ 🦋</div>
                 <h3>Del Grano a la Taza: Presentaciones Digitales y el Café</h3>
+                <p style="color: var(--cafe-medio); margin-top: 10px;">Software de presentaciones digitales aplicado al proyecto productivo</p>
             </div>
 
             <div class="coffee-connection">
-                Así como el gusano trabaja la tierra para fertilizarla, y así como el grano de café pasa por múltiples transformaciones antes de llegar a nuestra taza, una presentación digital requiere procesos ordenados de construcción.
-            </div>
-
-            <div class="interactive-element" onclick="startClass()">
-                <h3>🎯 Comenzar la Clase</h3>
-                <p>Haz clic aquí para iniciar el temporizador y comenzar con la Sesión 1</p>
+                Así como el gusano trabaja la tierra para fertilizarla, y así como el grano de café pasa por múltiples transformaciones antes de llegar a nuestra taza, una presentación digital requiere <strong>procesos ordenados de construcción</strong>.
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
                 <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; text-align: center;">
-                    <div style="font-size: 2em;">⏱️</div>
-                    <strong>Duración Total:</strong><br>4 Horas (2 Sesiones)
+                    <div style="font-size: 2.5em;">⏱️</div>
+                    <strong>Duración Total:</strong><br>4 Horas (2 Sesiones de 2h)
                 </div>
                 <div style="background: #FFF3E0; padding: 20px; border-radius: 10px; text-align: center;">
-                    <div style="font-size: 2em;">🎯</div>
-                    <strong>Proyecto:</strong><br>Agricultura - Café
+                    <div style="font-size: 2.5em;">🎯</div>
+                    <strong>Proyecto Productivo:</strong><br>Agricultura - Cultivo de Café
                 </div>
                 <div style="background: #E3F2FD; padding: 20px; border-radius: 10px; text-align: center;">
-                    <div style="font-size: 2em;">💻</div>
-                    <strong>Herramienta:</strong><br>PowerPoint / Equivalente
+                    <div style="font-size: 2.5em;">💻</div>
+                    <strong>Herramienta:</strong><br>PowerPoint o equivalente
                 </div>
             </div>
+
+            <div class="interactive-element" onclick="startClass()" style="margin-top: 30px;">
+                <h3>🎯 Comenzar la Clase</h3>
+                <p>Haz clic aquí para iniciar el temporizador y comenzar con la Sesión 1</p>
+                <small>Se activará el cronómetro de 4 horas y se marcará el inicio de la sesión</small>
+            </div>
+
+            <div class="slide-indicator">Diapositiva 1 de 11</div>
         </div>
 
         <!-- Slide 1: Contexto Nasa -->
         <div class="slide" id="slide-1">
+            <span class="session-badge">Sesión 1 - Apertura (20 min)</span>
             <h2>🌿 La Época de Gusanos (Seip)</h2>
             
             <div class="nasa-context">
                 En la cosmovisión Nasa, la época de Gusanos representa el tiempo de la transformación interior, del trabajo profundo en la tierra, de preparar el terreno para lo que vendrá.
             </div>
 
-            <h3>¿Qué significa Seip?</h3>
-            <ul style="margin-left: 20px; line-height: 2;">
-                <li><span class="highlight">Transformación:</span> Como el gusano que se convierte en mariposa</li>
-                <li><span class="highlight">Trabajo profundo:</span> Labor en lo invisible, en la raíz</li>
-                <li><span class="highlight">Paciencia:</span> Procesos que no se apresuran</li>
-                <li><span class="highlight">Preparación:</span> Construir bases para el futuro</li>
-            </ul>
+            <h3>Significado de Seip en la pedagogía:</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2em;">🔄</div>
+                    <strong>Transformación</strong><br>Como el gusano que se convierte en mariposa
+                </div>
+                <div style="background: #FFF3E0; padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2em;">🕳️</div>
+                    <strong>Trabajo profundo</strong><br>Labor en lo invisible, en la raíz
+                </div>
+                <div style="background: #E3F2FD; padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2em;">⏳</div>
+                    <strong>Paciencia</strong><br>Procesos que no se apresuran
+                </div>
+                <div style="background: #F3E5F5; padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2em;">🏗️</div>
+                    <strong>Preparación</strong><br>Construir bases para el futuro
+                </div>
+            </div>
 
             <div class="diagram">
-    ┌─────────────────────────────────────┐
-    │         CICLO DE SEIP              │
-    │                                     │
-    │    🌱  →  🐛  →  🌀  →  🦋  →  🌸   │
-    │   Siembra  Trabajo  Capullo  Vuelo  Floración
-    │           profundo   interno  libre  compartida
-    │                                     │
-    │   "El gusano no tiene prisa,      │
-    │    pero tampoco descansa"          │
-    └─────────────────────────────────────┘
+    ┌──────────────────────────────────────────┐
+    │           CICLO DE SEIP                  │
+    │                                          │
+    │     🌱  →  🐛  →  🌀  →  🦋  →  🌸      │
+    │                                          │
+    │   Siembra   Trabajo   Capullo   Vuelo   │
+    │              profundo   interno   libre  │
+    │                                          │
+    │   "El gusano no tiene prisa,            │
+    │    pero tampoco descansa"               │
+    │                                          │
+    └──────────────────────────────────────────┘
             </div>
 
             <div class="coffee-connection">
@@ -553,35 +673,44 @@
 
             <div class="methodology">
                 <div class="methodology-title">📍 Metodología: Círculo de Palabra</div>
-                <p><strong>Actividad:</strong> En círculo, cada estudiante comparte una palabra que asocie con "transformación" o "trabajo profundo". El docente conecta con el proceso de crear presentaciones.</p>
+                <p><strong>Actividad (10 minutos):</strong></p>
+                <ol class="step-by-step">
+                    <li>Formar un círculo con los estudiantes</li>
+                    <li>Cada uno comparte una palabra que asocie con "transformación" o "trabajo profundo"</li>
+                    <li>El docente conecta cada aporte con el proceso de crear presentaciones digitales</li>
+                    <li>Cierre: "Hoy somos como gusanos, trabajando en la transformación de ideas en presentaciones"</li>
+                </ol>
             </div>
+
+            <div class="slide-indicator">Diapositiva 2 de 11</div>
         </div>
 
         <!-- Slide 2: Interfaz -->
         <div class="slide" id="slide-2">
+            <span class="session-badge">Sesión 1 - Conceptos (25 min)</span>
             <h2>🖥️ Anatomía de la Interfaz PowerPoint</h2>
 
-            <div class="diagram" style="font-size: 0.9em;">
-┌─────────────────────────────────────────────────────────┐
-│  [ARCHIVO] [INICIO] [INSERTAR] [DISEÑO] [TRANSICIONES]  │  ← CINTA DE OPCIONES
-│  [ANIMACIONES] [PRESENTACIÓN] [REVISAR] [VISTA]       │
-├─────────────────────────────────────────────────────────┤
-│  ┌─────────┐  ┌─────────────────────────────────────┐  │
-│  │         │  │                                     │  │
-│  │  MINIATURAS  │      ÁREA DE TRABAJO               │  │
-│  │  DE        │      (Diapositiva activa)          │  │
-│  │  DIAPOSITIVAS│                                    │  │
-│  │         │  │     [Contenedores de texto]       │  │
-│  │  Diap 1  │  │     [Formas] [Imágenes]            │  │
-│  │  Diap 2  │  │     [Gráficos]                     │  │
-│  │  Diap 3  │  │                                     │  │
-│  │         │  └─────────────────────────────────────┘  │
-│  └─────────┘                                           │
-│         ↑                                              │
-│    PANEL IZQUIERDO                                     │
-└─────────────────────────────────────────────────────────┘
-         ↓
-    BARRA DE ESTADO
+            <div class="diagram">
+┌─────────────────────────────────────────────────────────────┐
+│  [ARCHIVO] [INICIO] [INSERTAR] [DISEÑO] [TRANSICIONES]     │  ← CINTA
+│  [ANIMACIONES] [PRESENTACIÓN] [REVISAR] [VISTA] [AYUDA]   │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────┐  ┌─────────────────────────────────────────┐  │
+│  │  📄     │  │                                         │  │
+│  │  📄     │  │         ÁREA DE TRABAJO                │  │
+│  │  📄     │  │         (Diapositiva activa)           │  │
+│  │  PANEL   │  │                                         │  │
+│  │  DE      │  │    ┌─────────────────────────┐         │  │
+│  │MINIATURAS│  │    │   Contenedores de       │         │  │
+│  │         │  │    │   texto y formas          │         │  │
+│  │  Diap 1 │  │    │                         │         │  │
+│  │  Diap 2 │  │    │    [Imagen/Gáfico]      │         │  │
+│  │  Diap 3 │  │    │                         │         │  │
+│  │         │  │    └─────────────────────────┘         │  │
+│  └─────────┘  └─────────────────────────────────────────┘  │
+├─────────────────────────────────────────────────────────────┤
+│  Diapositiva 1 de 8                    Idioma    Zoom: 100% │
+└─────────────────────────────────────────────────────────────┘
             </div>
 
             <table>
@@ -589,7 +718,7 @@
                     <tr>
                         <th>Elemento</th>
                         <th>Ubicación</th>
-                        <th>Función</th>
+                        <th>Función Principal</th>
                         <th>Analogía Nasa</th>
                     </tr>
                 </thead>
@@ -597,26 +726,38 @@
                     <tr>
                         <td><strong>Cinta de opciones</strong></td>
                         <td>Parte superior</td>
-                        <td>Agrupa todas las herramientas</td>
-                        <td>Las fajas del tejedor para organizar hilos</td>
+                        <td>Agrupa todas las herramientas por categorías</td>
+                        <td>Las fajas que el tejedor usa para organizar sus hilos</td>
                     </tr>
                     <tr>
                         <td><strong>Pestañas</strong></td>
                         <td>Arriba de la cinta</td>
-                        <td>Cambian entre categorías</td>
-                        <td>Las épocas del año que organizan el trabajo</td>
+                        <td>Cambian entre categorías de herramientas</td>
+                        <td>Las épocas del año que organizan el trabajo agrícola</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grupos</strong></td>
+                        <td>Dentro de cada pestaña</td>
+                        <td>Agrupan herramientas similares</td>
+                        <td>Las herramientas del campesino organizadas por función</td>
                     </tr>
                     <tr>
                         <td><strong>Área de trabajo</strong></td>
-                        <td>Centro</td>
-                        <td>Diseño de la diapositiva</td>
+                        <td>Centro de la pantalla</td>
+                        <td>Diseño visual de la diapositiva activa</td>
                         <td>El telar donde se teje el diseño</td>
                     </tr>
                     <tr>
                         <td><strong>Panel izquierdo</strong></td>
-                        <td>Lateral</td>
-                        <td>Miniaturas de diapositivas</td>
-                        <td>Las semillas guardadas que muestran el ciclo</td>
+                        <td>Lateral izquierdo</td>
+                        <td>Muestra miniaturas de todas las diapositivas</td>
+                        <td>Las semillas guardadas que muestran todo el ciclo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Barra de estado</strong></td>
+                        <td>Parte inferior</td>
+                        <td>Información y controles de vista</td>
+                        <td>El relato del anciano que guía el proceso</td>
                     </tr>
                 </tbody>
             </table>
@@ -625,31 +766,35 @@
                 <div class="methodology-title">📍 Metodología: Exploración Guiada</div>
                 <ol class="step-by-step">
                     <li>Proyectar PowerPoint en blanco en pantalla grande</li>
-                    <li>Señalar físicamente cada elemento mientras se nombra</li>
+                    <li>Señalar físicamente cada elemento mientras se nombra en voz alta</li>
                     <li>Pedir a estudiantes que repitan la ubicación en sus equipos</li>
                     <li>Verificación rápida: "Levanten la mano quienes encuentren la pestaña 'Insertar'"</li>
+                    <li>Desafío: "Quién puede cambiar la vista a 'Clasificador de diapositivas'"</li>
                 </ol>
             </div>
+
+            <div class="slide-indicator">Diapositiva 3 de 11</div>
         </div>
 
         <!-- Slide 3: Elementos de Diseño -->
         <div class="slide" id="slide-3">
+            <span class="session-badge">Sesión 1 - Diseño (30 min)</span>
             <h2>🎨 Elementos de Diseño de Diapositivas</h2>
 
-            <h3>Jerarquía de Elementos (Como el café)</h3>
+            <h3>Jerarquía de Elementos (Como las partes del café)</h3>
             <div class="diagram">
-                    PRESENTACIÓN DIGITAL
-                           │
-           ┌───────────────┼───────────────┐
-           ▼               ▼               ▼
-      PRIMARIOS       SECUNDARIOS     PERSONALIZADOS
-      (Raíces)        (Ramas)         (Frutos)
-           │               │               │
-      ┌────┴────┐     ┌────┴────┐     ┌────┴────┐
-      │         │     │         │     │         │
-    Texto   Formas  Gráficos Tablas  WordArt  Formas
-   básico  básicas   Smart           creativo  combinadas
-                      Art
+                         PRESENTACIÓN DIGITAL
+                                │
+                ┌───────────────┼───────────────┐
+                ▼               ▼               ▼
+           PRIMARIOS       SECUNDARIOS     PERSONALIZADOS
+           (Raíces)        (Ramas/Hojas)    (Flores/Frutos)
+                │               │               │
+           ┌────┴────┐     ┌────┴────┐     ┌────┴────┐
+           │         │     │         │     │         │
+         Texto   Formas   Gráficos  Tablas WordArt  Formas
+        básico  básicas   Smart            creativo  combinadas
+                         Art
             </div>
 
             <table>
@@ -658,137 +803,210 @@
                         <th>Tipo</th>
                         <th>Ejemplos</th>
                         <th>Uso en proyecto Café</th>
+                        <th>Icono</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Primarios</strong></td>
-                        <td>Texto, formas básicas, imágenes</td>
-                        <td>Título "Transformación del Café", rectángulos de etapas</td>
+                        <td><strong>Primarios</strong><br><small>Base estructural</small></td>
+                        <td>Texto, formas básicas (rectángulos, círculos), imágenes insertadas</td>
+                        <td>Título "Transformación del Café", rectángulos que representan las etapas del proceso</td>
+                        <td style="text-align: center; font-size: 1.5em;">📝</td>
                     </tr>
                     <tr>
-                        <td><strong>Secundarios</strong></td>
-                        <td>SmartArt, tablas, gráficos</td>
-                        <td>Diagrama: Siembra → Cosecha → Beneficio → Tostión</td>
+                        <td><strong>Secundarios</strong><br><small>Estructura y organización</small></td>
+                        <td>SmartArt, tablas, gráficos estadísticos, diagramas</td>
+                        <td>Diagrama de proceso: Siembra → Cosecha → Beneficio → Tostión → Molienda</td>
+                        <td style="text-align: center; font-size: 1.5em;">📊</td>
                     </tr>
                     <tr>
-                        <td><strong>Personalizados</strong></td>
-                        <td>Formas combinadas, WordArt</td>
-                        <td>Grano de café creado con óvalos modificados</td>
+                        <td><strong>Personalizados</strong><br><small>Identidad visual</small></td>
+                        <td>Formas combinadas, WordArt, objetos dibujados a mano, efectos especiales</td>
+                        <td>Forma de grano de café creada con óvalos modificados + punto de ancla</td>
+                        <td style="text-align: center; font-size: 1.5em;">✨</td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="interactive-element" onclick="this.style.background='#C8E6C9'">
-                <h3>☕ Ejemplo Práctico: "Del Grano a la Taza"</h3>
-                <p><strong>Escenario:</strong> Crear una diapositiva sobre el proceso del café</p>
-                <ul>
-                    <li><strong>Primario - Texto:</strong> Título "Transformación del Café"</li>
-                    <li><strong>Primario - Forma:</strong> Rectángulos que representan las etapas</li>
-                    <li><strong>Secundario - SmartArt:</strong> Diagrama de proceso completo</li>
-                    <li><strong>Personalizado:</strong> Forma de grano de café (haz clic para ver)</li>
+            <div class="interactive-element" onclick="toggleDetail('ejemplo-cafe')">
+                <h3>☕ Ejemplo Detallado: "Del Grano a la Taza"</h3>
+                <p>Haz clic para ver el desglose de elementos por tipo</p>
+            </div>
+
+            <div id="ejemplo-cafe" style="display: none; margin-top: 20px; padding: 20px; background: #FFF8E1; border-radius: 10px;">
+                <h4>Desglose de la diapositiva:</h4>
+                <ul style="line-height: 2;">
+                    <li><strong>Elemento Primario - Texto:</strong> Título "Transformación del Café" (Arial Black, 44pt, color café oscuro)</li>
+                    <li><strong>Elemento Primario - Forma:</strong> Rectángulos redondeados que representan las 5 etapas del proceso</li>
+                    <li><strong>Elemento Primario - Imagen:</strong> Foto de cafetal al fondo con transparencia del 60%</li>
+                    <li><strong>Elemento Secundario - SmartArt:</strong> Diagrama de proceso horizontal mostrando el flujo completo</li>
+                    <li><strong>Elemento Personalizado:</strong> Forma de grano de café creada combinando un óvalo estirado con una forma de "mella" (luna invertida)</li>
                 </ul>
             </div>
+
+            <div class="methodology">
+                <div class="methodology-title">📍 Metodología: Demostración en Vivo</div>
+                <p><strong>Secuencia para el docente:</strong></p>
+                <ol class="step-by-step">
+                    <li>Crear diapositiva en vivo proyectando paso a paso</li>
+                    <li>Pensar en voz alta: "Necesito mostrar el proceso, usaré SmartArt de proceso..."</li>
+                    <li>Cometer errores intencionales y corregirlos: "Ups, esta forma quedó muy grande, usaré los controladores de tamaño..."</li>
+                    <li>Estudiantes replican en sus equipos simultáneamente</li>
+                    <li>Pase de revisión: docente circula verificando avances</li>
+                </ol>
+            </div>
+
+            <div class="slide-indicator">Diapositiva 4 de 11</div>
         </div>
 
         <!-- Slide 4: Formas y Estilos -->
         <div class="slide" id="slide-4">
+            <span class="session-badge">Sesión 1 - Formas (25 min)</span>
             <h2>🔷 Formas, Estilos y Degradados</h2>
 
             <h3>Biblioteca de Formas Básicas</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0;">
-                <div style="background: #E3F2FD; padding: 15px; border-radius: 10px; text-align: center;">
-                    <div style="font-size: 2em;">⬜</div>
-                    <strong>Rectángulo</strong><br>Contenedores
+                <div style="background: #E3F2FD; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #2196F3;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">⬜</div>
+                    <strong>Rectángulo</strong><br>
+                    <small>Contenedores de texto, fondos, agrupaciones</small>
                 </div>
-                <div style="background: #F3E5F5; padding: 15px; border-radius: 10px; text-align: center;">
-                    <div style="font-size: 2em;">⭕</div>
-                    <strong>Círculo</strong><br>Puntos/claves
+                <div style="background: #F3E5F5; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #9C27B0;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">⭕</div>
+                    <strong>Círculo/Óvalo</strong><br>
+                    <small>Puntos clave, pasos numerados, grano de café</small>
                 </div>
-                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; text-align: center;">
-                    <div style="font-size: 2em;">🔺</div>
-                    <strong>Triángulo</strong><br>Dirección
+                <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #4CAF50;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">🔺</div>
+                    <strong>Triángulo</strong><br>
+                    <small>Dirección, advertencias, jerarquía visual</small>
                 </div>
-                <div style="background: #FFF3E0; padding: 15px; border-radius: 10px; text-align: center;">
-                    <div style="font-size: 2em;">➡️</div>
-                    <strong>Flechas</strong><br>Flujo/proceso
+                <div style="background: #FFF3E0; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #FF9800;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">➡️</div>
+                    <strong>Flechas</strong><br>
+                    <small>Flujo de procesos, conexiones entre etapas</small>
+                </div>
+                <div style="background: #FFEBEE; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #F44336;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">⭐</div>
+                    <strong>Estrellas</strong><br>
+                    <small>Destacar información importante, calidad</small>
+                </div>
+                <div style="background: #E0F2F1; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #009688;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">🫧</div>
+                    <strong>Burbujas</strong><br>
+                    <small>Diálogos, pensamientos, citas textuales</small>
                 </div>
             </div>
 
-            <h3>🌈 Paleta de Colores: Amanecer en el Cafetal</h3>
+            <h3>🎨 Paleta de Colores: Amanecer en el Cafetal del Cauca</h3>
+            <p>Haz clic en cada color para copiar su código hexadecimal</p>
             <div class="color-palette">
-                <div class="color-box tooltip" style="background: #2E7D32;" data-tip="Verde bosque - Montañas del Cauca">Bosque</div>
-                <div class="color-box tooltip" style="background: #3E2723;" data-tip="Café oscuro - Textos importantes">Café</div>
-                <div class="color-box tooltip" style="background: #FFB300; color: #333;" data-tip="Dorado - Acentos y títulos">Dorado</div>
-                <div class="color-box tooltip" style="background: #D84315;" data-tip="Tierra - Formas y gráficos">Tierra</div>
-                <div class="color-box tooltip" style="background: #F5F5DC; color: #333; border: 2px solid #ccc;" data-tip="Blanco hueso - Fondos de texto">Hueso</div>
+                <div class="color-box tooltip" style="background: #2E7D32;" data-tip="Verde bosque - Montañas del Cauca" onclick="copyColor('#2E7D32')">
+                    Bosque<br><small>#2E7D32</small>
+                </div>
+                <div class="color-box tooltip" style="background: #3E2723;" data-tip="Café oscuro - Textos importantes" onclick="copyColor('#3E2723')">
+                    Café<br><small>#3E2723</small>
+                </div>
+                <div class="color-box tooltip" style="background: #FFB300; color: #333;" data-tip="Dorado - Acentos y títulos" onclick="copyColor('#FFB300')">
+                    Dorado<br><small>#FFB300</small>
+                </div>
+                <div class="color-box tooltip" style="background: #D84315;" data-tip="Tierra - Formas y gráficos" onclick="copyColor('#D84315')">
+                    Tierra<br><small>#D84315</small>
+                </div>
+                <div class="color-box tooltip" style="background: #F5F5DC; color: #333; border: 2px solid #ccc;" data-tip="Blanco hueso - Fondos de texto" onclick="copyColor('#F5F5DC')">
+                    Hueso<br><small>#F5F5DC</small>
+                </div>
+                <div class="color-box tooltip" style="background: #87CEEB; color: #333;" data-tip="Cielo - Fondos degradados" onclick="copyColor('#87CEEB')">
+                    Cielo<br><small>#87CEEB</small>
+                </div>
             </div>
 
-            <h3>Tipos de Degradados</h3>
+            <h3>Tipos de Degradados (Transiciones de color)</h3>
             <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
-                <div style="flex: 1; min-width: 250px;">
-                    <div style="background: linear-gradient(to right, #87CEEB, #228B22); height: 100px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-                        LINEAL
+                <div style="flex: 1; min-width: 280px;">
+                    <div style="background: linear-gradient(to right, #87CEEB, #228B22); height: 120px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                        DEGRADADO LINEAL
                     </div>
-                    <p style="text-align: center; margin-top: 10px;">Dirección fija: cielo → montaña</p>
+                    <p style="text-align: center; margin-top: 10px; font-weight: 600;">Dirección fija: cielo → montaña</p>
+                    <p style="text-align: center; font-size: 0.9em; color: #666;">Uso: Fondos de diapositiva, barras de progreso</p>
                 </div>
-                <div style="flex: 1; min-width: 250px;">
-                    <div style="background: radial-gradient(circle, #FFB300, #3E2723); height: 100px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-                        RADIAL
+                <div style="flex: 1; min-width: 280px;">
+                    <div style="background: radial-gradient(circle at center, #FFB300 0%, #3E2723 70%); height: 120px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                        DEGRADADO RADIAL
                     </div>
-                    <p style="text-align: center; margin-top: 10px;">Desde el centro: grano de café</p>
+                    <p style="text-align: center; margin-top: 10px; font-weight: 600;">Desde el centro: grano de café</p>
+                    <p style="text-align: center; font-size: 0.9em; color: #666;">Uso: Énfasis en elementos centrales, fondos dramáticos</p>
                 </div>
             </div>
 
             <div class="methodology">
-                <div class="methodology-title">📍 Procedimiento: Aplicar Degradado</div>
+                <div class="methodology-title">📍 Procedimiento Paso a Paso: Aplicar Degradado</div>
                 <ol class="step-by-step">
-                    <li>Seleccionar la forma</li>
-                    <li>Ir a: Formato de forma → Relleno de forma → Degradado</li>
-                    <li>Elegir tipo: Lineal o Radial</li>
-                    <li>Definir puntos de degradado: Mínimo 2 (inicio y fin)</li>
-                    <li>Seleccionar colores: Usar gotero para capturar colores de imágenes</li>
-                    <li>Ajustar ángulo: Para degradados lineales</li>
+                    <li>Seleccionar la forma haciendo clic sobre ella</li>
+                    <li>Ir a: <strong>Formato de forma → Relleno de forma → Degradado</strong></li>
+                    <li>Elegir tipo: <strong>Lineal</strong> (direccional) o <strong>Radial</strong> (circular)</li>
+                    <li>Definir puntos de degradado: Mínimo 2 (color de inicio y color de fin)</li>
+                    <li>Seleccionar colores: Usar gotero para capturar colores de imágenes reales</li>
+                    <li>Ajustar ángulo: Para degradados lineales (0°=izq→der, 90°=arriba→abajo)</li>
+                    <li>Ajustar transparencia si es necesario (especialmente para fondos)</li>
                 </ol>
             </div>
+
+            <div class="coffee-connection">
+                <strong>Ejercicio práctico:</strong> Crear un fondo que evoque el amanecer en una finca cafetera del Cauca usando degradado lineal de azul cielo (#87CEEB) a verde montaña (#228B22).
+            </div>
+
+            <div class="slide-indicator">Diapositiva 5 de 11</div>
         </div>
 
         <!-- Slide 5: Principios de Diseño -->
         <div class="slide" id="slide-5">
+            <span class="session-badge">Sesión 2 - Fundamentos (30 min)</span>
             <h2>📐 Principios de Diseño para Presentaciones</h2>
 
             <h3>1. Jerarquía Visual (Como la organización comunitaria Nasa)</h3>
-            <div style="background: #F5F5F5; padding: 30px; border-radius: 10px; margin: 20px 0; text-align: center;">
-                <div style="font-size: 2em; font-weight: bold; color: var(--cafe-oscuro); margin-bottom: 10px;">
+            <div style="background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%); padding: 30px; border-radius: 10px; margin: 20px 0; border: 2px solid var(--cafe-claro);">
+                <div style="font-size: 2.2em; font-weight: bold; color: var(--cafe-oscuro); margin-bottom: 5px; text-align: center; border-bottom: 3px solid var(--dorado); padding-bottom: 10px;">
                     TÍTULO PRINCIPAL
-                </div>
-                <div style="font-size: 0.5em; color: #666; margin-bottom: 20px;">
-                    (Como el Cacique, guía la mirada)
+                    <div style="font-size: 0.4em; color: #666; font-weight: normal; margin-top: 5px;">Como el Cacique, guía la mirada del espectador</div>
                 </div>
                 
-                <div style="font-size: 1.3em; color: var(--cafe-medio); margin-bottom: 20px;">
-                    Subtítulo o descripción<br>
-                    <span style="font-size: 0.7em; color: #888;">(Como los consejeros, apoyan)</span>
+                <div style="font-size: 1.4em; color: var(--cafe-medio); margin: 20px 0; text-align: center;">
+                    Subtítulo o descripción importante
+                    <div style="font-size: 0.7em; color: #888; margin-top: 5px;">Como los consejeros, apoyan y contextualizan</div>
                 </div>
                 
-                <div style="display: flex; gap: 20px; justify-content: center; font-size: 0.9em;">
-                    <div style="background: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        Contenido secundario<br>
-                        <span style="font-size: 0.8em; color: #666;">(La comunidad)</span>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+                    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex: 1; min-width: 200px; text-align: center; border-top: 4px solid var(--verde-bosque);">
+                        <div style="font-size: 1.1em; color: var(--texto); margin-bottom: 5px;">Contenido secundario</div>
+                        <div style="font-size: 0.85em; color: #666;">Información de apoyo</div>
                     </div>
-                    <div style="background: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        Contenido secundario<br>
-                        <span style="font-size: 0.8em; color: #666;">(La comunidad)</span>
+                    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex: 1; min-width: 200px; text-align: center; border-top: 4px solid var(--verde-bosque);">
+                        <div style="font-size: 1.1em; color: var(--texto); margin-bottom: 5px;">Contenido secundario</div>
+                        <div style="font-size: 0.85em; color: #666;">Datos específicos</div>
                     </div>
+                </div>
+                <div style="text-align: center; margin-top: 15px; font-size: 0.9em; color: #888; font-style: italic;">
+                    Como la comunidad, base y sustento de la información
                 </div>
             </div>
 
-            <h3>2. Regla del Tercio</h3>
-            <div style="position: relative; width: 100%; max-width: 600px; margin: 20px auto; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect fill=%22%23f0f0f0%22 width=%22100%22 height=%22100%22/><line x1=%2233.33%22 y1=%220%22 x2=%2233.33%22 y2=%22100%22 stroke=%22%23FFB300%22 stroke-width=%222%22/><line x1=%2266.66%22 y1=%220%22 x2=%2266.66%22 y2=%22100%22 stroke=%22%23FFB300%22 stroke-width=%222%22/><line x1=%220%22 y1=%2233.33%22 x2=%22100%22 y2=%2233.33%22 stroke=%22%23FFB300%22 stroke-width=%222%22/><line x1=%220%22 y1=%2266.66%22 x2=%22100%22 y2=%2266.66%22 stroke=%22%23FFB300%22 stroke-width=%222%22/></svg>'); height: 300px; border: 2px solid var(--cafe-oscuro); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                <div style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; text-align: center;">
-                    <strong>Los puntos de intersección</strong><br>
-                    son zonas de mayor atención visual<br>
-                    <span style="font-size: 0.9em; color: #666;">Como la división del trabajo en la minga</span>
+            <h3>2. Regla del Tercio (Como la división del trabajo en la minga)</h3>
+            <div style="position: relative; width: 100%; max-width: 600px; margin: 20px auto; background: #f0f0f0; height: 350px; border: 3px solid var(--cafe-oscuro); border-radius: 10px; overflow: hidden;">
+                <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
+                    <line x1="33.33%" y1="0" x2="33.33%" y2="100%" stroke="#FFB300" stroke-width="3" stroke-dasharray="5,5"/>
+                    <line x1="66.66%" y1="0" x2="66.66%" y2="100%" stroke="#FFB300" stroke-width="3" stroke-dasharray="5,5"/>
+                    <line x1="0" y1="33.33%" x2="100%" y2="33.33%" stroke="#FFB300" stroke-width="3" stroke-dasharray="5,5"/>
+                    <line x1="0" y1="66.66%" x2="100%" y2="66.66%" stroke="#FFB300" stroke-width="3" stroke-dasharray="5,5"/>
+                    <circle cx="33.33%" cy="33.33%" r="8" fill="#D84315"/>
+                    <circle cx="66.66%" cy="33.33%" r="8" fill="#D84315"/>
+                    <circle cx="33.33%" cy="66.66%" r="8" fill="#D84315"/>
+                    <circle cx="66.66%" cy="66.66%" r="8" fill="#D84315"/>
+                </svg>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); max-width: 80%;">
+                    <strong style="color: var(--cafe-oscuro); font-size: 1.2em;">Los puntos de intersección</strong><br>
+                    <span style="color: #D84315; font-size: 1.5em;">●</span> Zonas de mayor atención visual<br>
+                    <small style="color: #666;">Coloca aquí los elementos más importantes</small>
                 </div>
             </div>
 
@@ -799,77 +1017,255 @@
                         <th>Elemento</th>
                         <th>Buena práctica ✅</th>
                         <th>Mala práctica ❌</th>
+                        <th>Ejemplo Café</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Texto sobre imagen</td>
-                        <td>Fondo semitransparente</td>
+                        <td>Usar fondo semitransparente o capa de color</td>
                         <td>Texto directo sobre foto compleja</td>
+                        <td>Foto de cafetal + rectángulo negro 40% transparente</td>
                     </tr>
                     <tr>
                         <td>Colores de texto</td>
                         <td>Oscuro sobre claro / Claro sobre oscuro</td>
-                        <td>Amarillo sobre blanco</td>
+                        <td>Colores similares (amarillo sobre blanco)</td>
+                        <td>Texto café oscuro sobre fondo crema</td>
                     </tr>
                     <tr>
                         <td>Tamaño de fuente</td>
                         <td>Títulos 32-44pt, Cuerpo 18-24pt</td>
                         <td>Todo del mismo tamaño</td>
+                        <td>Título: 36pt, Subtítulo: 24pt, Cuerpo: 18pt</td>
                     </tr>
                     <tr>
                         <td>Cantidad de texto</td>
                         <td>Máximo 6 líneas por diapositiva</td>
-                        <td>Párrafos completos</td>
+                        <td>Párrafos completos y densos</td>
+                        <td>"El café requiere sombra, altitud y paciencia" (breve)</td>
                     </tr>
                 </tbody>
             </table>
+
+            <div class="slide-indicator">Diapositiva 6 de 11</div>
         </div>
 
         <!-- Slide 6: Práctica Café -->
         <div class="slide" id="slide-6">
+            <span class="session-badge">Sesión 2 - Práctica (45 min)</span>
             <h2>☕ Práctica Guiada: Del Grano a la Taza</h2>
 
             <div class="coffee-connection">
-                Crearemos una presentación de 5 diapositivas sobre el proceso del café, aplicando todas las herramientas aprendidas.
+                Crearemos una presentación completa de 5 diapositivas sobre el proceso del café, aplicando todas las herramientas aprendidas. Esta será tu entrega final del período.
             </div>
 
             <h3>Estructura de la Presentación</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Diapositiva</th>
-                        <th>Contenido</th>
-                        <th>Elementos a usar</th>
+                        <th style="width: 10%;">N°</th>
+                        <th style="width: 25%;">Diapositiva</th>
+                        <th style="width: 35%;">Contenido específico</th>
+                        <th style="width: 30%;">Elementos a usar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>1. Portada</strong></td>
-                        <td>Título, subtítulo, imagen representativa</td>
-                        <td>Formas, degradados, texto</td>
+                    <tr style="background: #E8F5E9;">
+                        <td><strong>1</strong></td>
+                        <td>Portada</td>
+                        <td>Título creativo, nombre del estudiante, imagen representativa del café</td>
+                        <td>Degradado radial, texto con sombra, forma de grano</td>
                     </tr>
                     <tr>
-                        <td><strong>2. Introducción</strong></td>
-                        <td>¿Qué es el café? Origen en el Cauca</td>
-                        <td>SmartArt, imágenes</td>
+                        <td><strong>2</strong></td>
+                        <td>Introducción</td>
+                        <td>¿Qué es el café? Origen histórico en el Cauca, importancia cultural</td>
+                        <td>SmartArt de jerarquía, mapa mental, imágenes</td>
+                    </tr>
+                    <tr style="background: #FFF3E0;">
+                        <td><strong>3</strong></td>
+                        <td>Proceso inicial</td>
+                        <td>Etapas: Siembra, germinación, crecimiento, floración</td>
+                        <td>Formas de flujo, flechas conectoras, iconos</td>
                     </tr>
                     <tr>
-                        <td><strong>3. Proceso</strong></td>
-                        <td>Etapas: Siembra, crecimiento, cosecha</td>
-                        <td>Formas de flujo, flechas</td>
+                        <td><strong>4</strong></td>
+                        <td>Transformación</td>
+                        <td>Cosecha, beneficio (lavado/seco), tostión, molienda</td>
+                        <td>Gráfico de barras, degradados café, tablas</td>
                     </tr>
-                    <tr>
-                        <td><strong>4. Transformación</strong></td>
-                        <td>Beneficio, tostión, molienda</td>
-                        <td>Gráficos, degradados</td>
-                    </tr>
-                    <tr>
-                        <td><strong>5. Cierre</strong></td>
-                        <td>Reflexión sobre trabajo comunitario</td>
-                        <td>Imagen, texto inspirador</td>
+                    <tr style="background: #E3F2FD;">
+                        <td><strong>5</strong></td>
+                        <td>Cierre</td>
+                        <td>Reflexión sobre trabajo comunitario (minga) y cosmovisión Nasa</td>
+                        <td>Imagen de fondo semitransparente, cita inspiradora</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h3>Guía
+            <h3>Guía Paso a Paso: Diapositiva 1 (Portada)</h3>
+            <div class="methodology">
+                <div class="methodology-title">📍 Instrucciones detalladas:</div>
+                <ol class="step-by-step">
+                    <li><strong>Diseño de fondo:</strong> Insertar rectángulo que ocupe toda la diapositiva. Aplicar degradado radial: centro claro (hueso #F5F5DC) a bordes oscuros (café #3E2723)</li>
+                    <li><strong>Título:</strong> Insertar cuadro de texto → "Del Grano a la Taza: El Café del Cauca" → Fuente: Arial Black, 40pt, color café oscuro, sombra suave</li>
+                    <li><strong>Subtítulo:</strong> "Proceso de transformación del café" → Fuente: Arial, 24pt, color verde bosque, cursiva</li>
+                    <li><strong>Elemento decorativo:</strong> Crear forma de grano de café: Insertar óvalo estirado + pequeña forma de luna invertida para la mella. Agrupar (Ctrl+G)</li>
+                    <li><strong>Posicionar:</strong> Título centrado en tercio superior, subtítulo en tercio medio, grano en esquina inferior derecha con rotación de 15°</li>
+                    <li><strong>Efecto final:</strong> Aplicar sombra exterior suave al grano para profundidad</li>
+                </ol>
+            </div>
+
+            <h3>Guía Rápida: Diapositivas 2-5</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; border-left: 4px solid var(--verde-bosque);">
+                    <strong>Diap 2 - Introducción:</strong><br>
+                    Insertar → SmartArt → Ciclo básico. Añadir: Origen Etiopía → Llegada a Colombia → Región del Cauca. Cambiar colores a tonos café/verde.
+                </div>
+                <div style="background: #FFF3E0; padding: 15px; border-radius: 10px; border-left: 4px solid var(--dorado);">
+                    <strong>Diap 3 - Proceso:</strong><br>
+                    Insertar → Formas → Formas de flujo. Secuencia: Óvalo (Inicio) → Rectángulo (Proceso) → Rombo (Decisión) → Flechas de conexión.
+                </div>
+                <div style="background: #E3F2FD; padding: 15px; border-radius: 10px; border-left: 4px solid #2196F3;">
+                    <strong>Diap 4 - Transformación:</strong><br>
+                    Insertar → Gráfico → Columnas. Datos: Etapas vs Tiempo (horas). Personalizar colores a degradado café.
+                </div>
+                <div style="background: #F3E5F5; padding: 15px; border-radius: 10px; border-left: 4px solid #9C27B0;">
+                    <strong>Diap 5 - Cierre:</strong><br>
+                    Insertar imagen de campesinos → Formato → Enviar atrás. Rectángulo negro encima → Transparencia 40%. Texto blanco centrado.
+                </div>
+            </div>
+
+            <div class="interactive-element" onclick="toggleChecklist()">
+                <h3>✓ Checklist de Verificación</h3>
+                <p>Haz clic para ver la lista de verificación de tu presentación</p>
+            </div>
+
+            <div id="checklist-container" style="display: none; margin-top: 20px;">
+                <ul class="checklist">
+                    <li onclick="this.classList.toggle('checked')">Portada con título creativo y nombre propio</li>
+                    <li onclick="this.classList.toggle('checked')">Mínimo 3 tipos de formas diferentes usados</li>
+                    <li onclick="this.classList.toggle('checked')">Degradados aplicados en al menos 2 diapositivas</li>
+                    <li onclick="this.classList.toggle('checked')">SmartArt o gráfico incluido</li>
+                    <li onclick="this.classList.toggle('checked')">Imagen relacionada con café o cultura Nasa</li>
+                    <li onclick="this.classList.toggle('checked')">Texto legible (contraste adecuado)</li>
+                    <li onclick="this.classList.toggle('checked')">Máximo 6 líneas de texto por diapositiva</li>
+                    <li onclick="this.classList.toggle('checked')">Conexión explícita con cosmovisión Nasa o trabajo comunitario</li>
+                    <li onclick="this.classList.toggle('checked')">Archivo guardado en formato .pptx y .pdf</li>
+                </ul>
+            </div>
+
+            <div class="slide-indicator">Diapositiva 7 de 11</div>
+        </div>
+
+        <!-- Slide 7: Guardado y Formatos -->
+        <div class="slide" id="slide-7">
+            <span class="session-badge">Sesión 2 - Técnica (15 min)</span>
+            <h2>💾 Guardado y Formatos de Archivo</h2>
+
+            <h3>Formatos Disponibles y Cuándo Usarlos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Formato</th>
+                        <th>Extensión</th>
+                        <th>Mejor para...</th>
+                        <th>Ventaja principal</th>
+                        <th>Icono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #E8F5E9;">
+                        <td><strong>Presentación</strong></td>
+                        <td>.pptx</td>
+                        <td>Editar más tarde, trabajo continuo</td>
+                        <td>Conserva todas las funciones y capas editables</td>
+                        <td style="text-align: center; font-size: 1.5em;">📊</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Presentación 97-2003</strong></td>
+                        <td>.ppt</td>
+                        <td>Compatibilidad con equipos antiguos</td>
+                        <td>Abre en versiones viejas de Office</td>
+                        <td style="text-align: center; font-size: 1.5em;">💾</td>
+                    </tr>
+                    <tr style="background: #FFF3E0;">
+                        <td><strong>PDF</strong></td>
+                        <td>.pdf</td>
+                        <td>Entrega final, compartir, imprimir</td>
+                        <td>No se modifica, universal, preserva diseño</td>
+                        <td style="text-align: center; font-size: 1.5em;">📄</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Imágenes</strong></td>
+                        <td>.jpg / .png</td>
+                        <td>Usar en otros documentos, web</td>
+                        <td>Cada diapositiva se convierte en imagen independiente</td>
+                        <td style="text-align: center; font-size: 1.5em;">🖼️</td>
+                    </tr>
+                    <tr style="background: #E3F2FD;">
+                        <td><strong>Video</strong></td>
+                        <td>.mp4</td>
+                        <td>Autoejecutable, presentaciones automáticas</td>
+                        <td>Incluye transiciones, animaciones y audio</td>
+                        <td style="text-align: center; font-size: 1.5em;">🎬</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="methodology">
+                <div class="methodology-title">📍 Procedimiento: Guardar como PDF (Obligatorio para entrega)</div>
+                <ol class="step-by-step">
+                    <li>Archivo → Guardar como → Examinar (o Guardar como Adobe PDF si está instalado)</li>
+                    <li>En "Tipo", seleccionar <strong>PDF (*.pdf)</strong> del menú desplegable</li>
+                    <li>Configurar opciones: 
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Publicar: <strong>Diapositivas</strong> (no Notas ni Handouts)</li>
+                            <li>Rango: <strong>Todo</strong></li>
+                            <li>Calidad: <strong>Estándar</strong> (para pantalla) o <strong>Alta</strong> (para impresión)</li>
+                        </ul>
+                    </li>
+                    <li>Clic en <strong>"Opciones"</strong> para verificar que "Diapositivas ocultas" NO esté marcado</li>
+                    <li>Clic en <strong>"Publicar"</strong> o <strong>"Guardar"</strong></li>
+                    <li>Verificar que el archivo PDF se abre correctamente y se ven todas las diapositivas</li>
+                </ol>
+            </div>
+
+            <div class="methodology" style="background: #FFF3E0; border-color: var(--dorado);">
+                <div class="methodology-title" style="color: var(--cafe-oscuro);">📍 Procedimiento: Guardar como Video (Opcional avanzado)</div>
+                <ol class="step-by-step">
+                    <li>Archivo → Exportar → Crear un video</li>
+                    <li>Calidad de video: Seleccionar <strong>HD (720p)</strong> (suficiente para proyección escolar)</li>
+                    <li>Grabar narraciones: <strong>No</strong> (a menos que hayan grabado audio)</li>
+                    <li>Segundos por diapositiva: Establecer <strong>5 segundos</strong> (ajustar según cantidad de texto)</li>
+                    <li>Clic en <strong>"Crear video"</strong></li>
+                    <li>Elegir ubicación y nombre del archivo</li>
+                    <li>Esperar a que termine la barra de progreso (puede tardar varios minutos)</li>
+                </ol>
+            </div>
+
+            <div class="coffee-connection">
+                <strong>Entrega final requerida:</strong> Dos archivos: (1) Presentación editable .pptx y (2) Versión PDF para visualización. Nombrar: "ApellidoNombre_Grado10_Cafe.pptx"
+            </div>
+
+            <div class="slide-indicator">Diapositiva 8 de 11</div>
+        </div>
+
+        <!-- Slide 8: Presentación -->
+        <div class="slide" id="slide-8">
+            <span class="session-badge">Sesión 2 - Socialización (20 min)</span>
+            <h2>🎤 Presentación de Trabajos: Ronda de Transformaciones</h2>
+
+            <div class="nasa-context">
+                Así como en la minga cada persona aporta su fuerza y conocimiento, hoy cada uno de ustedes aporta su creatividad y aprendizaje a la comunidad del aula.
+            </div>
+
+            <h3>Dinámica: Presentaciones Relámpago ⚡</h3>
+            <div style="background: #F5F5F5; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <ol style="line-height: 2; margin-left: 20px;">
+                    <li>Organizarse en <strong>grupos de 4 estudiantes</strong></li>
+                    <li>Cada estudiante presenta <strong>UNA diapositiva</strong> de su elección (1 minuto máximo)</li>
+                    <li>Explicar brevemente: <em>"Elegí esta diapositiva porque..."</em> y <em>"Usé esta herramienta
+
+                        
